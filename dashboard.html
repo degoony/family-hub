@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Youn Family">
+    <title>Youn Family HQ</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg: #0f0f13;
+            --bg-card: #1a1a24;
+            --bg-card-hover: #22222e;
+            --text: #e8e8ed;
+            --text-dim: #8888a0;
+            --text-bright: #ffffff;
+            --accent: #6C63FF;
+            --accent-glow: rgba(108, 99, 255, 0.15);
+            --green: #34D399;
+            --red: #F87171;
+            --orange: #FBBF24;
+            --blue: #60A5FA;
+            --pink: #F472B6;
+            --cyan: #22D3EE;
+            --border: rgba(255,255,255,0.06);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.3);
+            --tom: #60A5FA;
+            --jen: #F472B6;
+            --ethan: #34D399;
+            --ben: #FBBF24;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 16px 100px;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--bg) 80%, transparent);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-bright);
+            letter-spacing: -0.5px;
+        }
+
+        .header-date {
+            font-size: 14px;
+            color: var(--text-dim);
+        }
+
+        .header-subtitle {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            padding: 12px 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar { display: none; }
+
+        .tab {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--bg-card);
+            color: var(--text-dim);
+            border: 1px solid var(--border);
+        }
+
+        .tab.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 2px 12px rgba(108, 99, 255, 0.4);
+        }
+
+        /* View containers */
+        .view { display: none; }
+        .view.active { display: block; }
+
+        /* KPI Row */
+        .kpi-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 4px 0 16px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .kpi-scroll::-webkit-scrollbar { display: none; }
+
+        .kpi-card {
+            min-width: 140px;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .kpi-label {
+            font-size: 11px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+        }
+
+        .kpi-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-bright);
+        }
+
+        .kpi-sub {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 2px;
+        }
+
+        /* Section headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0 12px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-bright);
+        }
+
+        .section-badge {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .badge-alert { background: rgba(248,113,113,0.15); color: var(--red); }
+        .badge-info { background: rgba(96,165,250,0.15); color: var(--blue); }
+
+        /* Event Cards */
+        .day-group { margin-bottom: 20px; }
+
+        .day-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            padding-left: 4px;
+        }
+
+        .day-label .day-date {
+            color: var(--text);
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .event-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            margin-bottom: 8px;
+            border: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            transition: background 0.15s;
+        }
+
+        .event-card:active { background: var(--bg-card-hover); }
+
+        .event-time-col {
+            min-width: 52px;
+            text-align: right;
+        }
+
+        .event-time {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .event-ampm {
+            font-size: 10px;
+            color: var(--text-dim);
+        }
+
+        .event-allday {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .event-dot {
+            width: 3px;
+            border-radius: 2px;
+            min-height: 36px;
+            flex-shrink: 0;
+        }
+
+        .dot-tom { background: var(--tom); }
+        .dot-jen { background: var(--jen); }
+        .dot-ethan { background: var(--ethan); }
+        .dot-ben { background: var(--ben); }
+        .dot-family { background: linear-gradient(to bottom, var(--tom), var(--jen)); }
+        .dot-alert { background: var(--red); }
+
+        .event-details { flex: 1; min-width: 0; }
+
+        .event-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-bright);
+            line-height: 1.3;
+        }
+
+        .event-meta {
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-top: 2px;
+        }
+
+        .event-who {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 6px;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .who-tom { background: rgba(96,165,250,0.15); color: var(--tom); }
+        .who-jen { background: rgba(244,114,182,0.15); color: var(--jen); }
+        .who-ethan { background: rgba(52,211,153,0.15); color: var(--ethan); }
+        .who-ben { background: rgba(251,191,36,0.15); color: var(--ben); }
+        .who-family { background: var(--accent-glow); color: var(--accent); }
+
+        /* Alert Cards */
+        .alert-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--red);
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .alert-card.resolved {
+            border-left-color: var(--green);
+            opacity: 0.6;
+        }
+
+        .alert-card.warning {
+            border-left-color: var(--orange);
+        }
+
+        .alert-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: 4px;
+        }
+
+        .alert-detail {
+            font-size: 12px;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .alert-date {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        /* Weekly View */
+        .week-grid {
+            display: grid;
+            grid-template-columns: 50px 1fr;
+            gap: 0;
+        }
+
+        .week-time {
+            font-size: 11px;
+            color: var(--text-dim);
+            text-align: right;
+            padding: 8px 8px 8px 0;
+            border-right: 1px solid var(--border);
+        }
+
+        .week-slot {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+            min-height: 40px;
+        }
+
+        .week-event {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        /* Trip Windows */
+        .trip-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trip-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .trip-card.available::before { background: var(--green); }
+        .trip-card.booked::before { background: var(--accent); }
+        .trip-card.needs-plan::before { background: var(--orange); }
+
+        .trip-dates {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .trip-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 8px;
+        }
+
+        .trip-detail {
+            font-size: 13px;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .trip-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-booked { background: rgba(108,99,255,0.15); color: var(--accent); }
+        .tag-open { background: rgba(52,211,153,0.15); color: var(--green); }
+        .tag-plan { background: rgba(251,191,36,0.15); color: var(--orange); }
+
+        /* Chart Container */
+        .chart-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .chart-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: 16px;
+        }
+
+        /* Person filter pills */
+        .person-filters {
+            display: flex;
+            gap: 8px;
+            padding: 8px 0 16px;
+            flex-wrap: wrap;
+        }
+
+        .person-pill {
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1.5px solid;
+            opacity: 0.4;
+        }
+
+        .person-pill.active { opacity: 1; }
+        .pill-tom { border-color: var(--tom); color: var(--tom); }
+        .pill-tom.active { background: rgba(96,165,250,0.15); }
+        .pill-jen { border-color: var(--jen); color: var(--jen); }
+        .pill-jen.active { background: rgba(244,114,182,0.15); }
+        .pill-ethan { border-color: var(--ethan); color: var(--ethan); }
+        .pill-ethan.active { background: rgba(52,211,153,0.15); }
+        .pill-ben { border-color: var(--ben); color: var(--ben); }
+        .pill-ben.active { background: rgba(251,191,36,0.15); }
+
+        /* Empty state */
+        .empty-day {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dim);
+            font-size: 13px;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            gap: 16px;
+            padding: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        /* Bottom nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15,15,19,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            padding: 10px 0 max(10px, env(safe-area-inset-bottom));
+            z-index: 200;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+            color: var(--text-dim);
+            transition: color 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .nav-item.active { color: var(--accent); }
+
+        .nav-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--red);
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 4px;
+            vertical-align: top;
+        }
+
+        @media (min-width: 500px) {
+            .app { padding: 0 24px 100px; }
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <div class="header">
+        <div class="header-top">
+            <div>
+                <h1>Youn Family HQ</h1>
+                <div class="header-subtitle">Chief of Staff Dashboard</div>
+            </div>
+            <div class="header-date" id="header-date"></div>
+        </div>
+    </div>
+
+    <div class="tabs" id="tabs">
+        <div class="tab active" data-view="today">Today</div>
+        <div class="tab" data-view="week">This Week</div>
+        <div class="tab" data-view="alerts">Alerts <span class="badge-dot"></span></div>
+        <div class="tab" data-view="trips">Trips</div>
+        <div class="tab" data-view="routine">Routine</div>
+    </div>
+
+    <!-- TODAY VIEW -->
+    <div class="view active" id="view-today">
+        <div class="kpi-scroll" id="kpi-row"></div>
+        <div class="person-filters" id="person-filters">
+            <div class="person-pill pill-tom active" data-person="tom" onclick="togglePerson(this)">Tom</div>
+            <div class="person-pill pill-jen active" data-person="jen" onclick="togglePerson(this)">Jen</div>
+            <div class="person-pill pill-ethan active" data-person="ethan" onclick="togglePerson(this)">Ethan</div>
+            <div class="person-pill pill-ben active" data-person="ben" onclick="togglePerson(this)">Ben</div>
+        </div>
+        <div id="today-events"></div>
+    </div>
+
+    <!-- WEEK VIEW -->
+    <div class="view" id="view-week">
+        <div id="week-events"></div>
+    </div>
+
+    <!-- ALERTS VIEW -->
+    <div class="view" id="view-alerts">
+        <div class="section-header">
+            <div class="section-title">Action Required</div>
+            <div class="section-badge badge-alert" id="alert-count"></div>
+        </div>
+        <div id="alerts-list"></div>
+    </div>
+
+    <!-- TRIPS VIEW -->
+    <div class="view" id="view-trips">
+        <div class="section-header">
+            <div class="section-title">Trip Windows</div>
+        </div>
+        <div id="trips-list"></div>
+    </div>
+
+    <!-- ROUTINE VIEW -->
+    <div class="view" id="view-routine">
+        <div class="section-header">
+            <div class="section-title">Weekly Routine</div>
+        </div>
+        <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--tom)"></div> Tom</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--jen)"></div> Jen</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--ethan)"></div> Ethan</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--ben)"></div> Ben</div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Weekly Activity Load</div>
+            <canvas id="activity-chart"></canvas>
+        </div>
+        <div id="routine-list"></div>
+    </div>
+</div>
+
+<div class="bottom-nav">
+    <div class="nav-item active" data-view="today" onclick="switchView(this)">
+        <div class="nav-icon">📅</div>
+        <div class="nav-label">Today</div>
+    </div>
+    <div class="nav-item" data-view="week" onclick="switchView(this)">
+        <div class="nav-icon">📆</div>
+        <div class="nav-label">Week</div>
+    </div>
+    <div class="nav-item" data-view="alerts" onclick="switchView(this)">
+        <div class="nav-icon">⚠️</div>
+        <div class="nav-label">Alerts</div>
+    </div>
+    <div class="nav-item" data-view="trips" onclick="switchView(this)">
+        <div class="nav-icon">✈️</div>
+        <div class="nav-label">Trips</div>
+    </div>
+    <div class="nav-item" data-view="routine" onclick="switchView(this)">
+        <div class="nav-icon">🔄</div>
+        <div class="nav-label">Routine</div>
+    </div>
+</div>
+
+<script>
+// ===== DATA =====
+const EVENTS = [
+    // Mar 29 - Sun
+    {date:"2026-03-29",time:"09:30",end:"11:00",name:"Church",who:"jen",icon:"⛪"},
+    {date:"2026-03-29",time:"10:00",end:"12:00",name:"Play date with Armaan",who:"ben",icon:"🎮"},
+    {date:"2026-03-29",time:"15:00",end:"16:30",name:"Swim play date — Emerson & Auggie",who:"ben",icon:"🏊"},
+    // Mar 30 - Mon
+    {date:"2026-03-30",time:null,name:"SSP: SPRING BREAK (all week)",who:"ben",icon:"🏖️",allDay:true},
+    {date:"2026-03-30",time:null,name:"Ben: Minecraft Lego Camp",who:"ben",icon:"🧱",allDay:true},
+    {date:"2026-03-30",time:"15:40",end:"16:10",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-03-30",time:"18:00",end:"19:00",name:"Trash night",who:"tom",icon:"🗑️"},
+    // Mar 31 - Tue
+    {date:"2026-03-31",time:null,name:"HR: No School → Exploratorium",who:"ethan",icon:"🔬",allDay:true},
+    {date:"2026-03-31",time:"17:00",end:"18:00",name:"Baseball practice",who:"ethan",icon:"⚾"},
+    // Apr 1 - Wed
+    {date:"2026-04-01",time:null,name:"HR: Bring classroom share item",who:"ethan",icon:"🎒",allDay:true},
+    {date:"2026-04-01",time:"15:40",end:"16:15",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    // Apr 3 - Fri
+    {date:"2026-04-03",time:"10:00",end:"10:30",name:"HR: Spring Show cleanup (MEW Room)",who:"jen",icon:"🧹"},
+    {date:"2026-04-03",time:"15:40",end:"16:15",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-04-03",time:"17:00",end:"18:00",name:"Ben: Art class",who:"ben",icon:"🎨"},
+    // Apr 5 - Sun
+    {date:"2026-04-05",time:"09:30",end:"11:00",name:"Church",who:"jen",icon:"⛪"},
+    // Apr 6-10 HR Spring Break
+    {date:"2026-04-06",time:null,name:"HR: SPRING BREAK (all week)",who:"ethan",icon:"🏖️",allDay:true},
+    {date:"2026-04-06",time:"18:00",end:"19:00",name:"Trash night",who:"tom",icon:"🗑️"},
+    // Apr 9
+    {date:"2026-04-09",time:"15:40",end:"16:10",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-04-09",time:"17:00",end:"18:00",name:"Ben: T-ball",who:"ben",icon:"⚾"},
+    // Apr 10
+    {date:"2026-04-10",time:"08:00",end:"09:00",name:"Mom's ophthalmology — Pasadena",who:"jen",icon:"👁️",location:"625 S Fair Oak Ave #400"},
+    {date:"2026-04-10",time:"15:40",end:"16:15",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-04-10",time:"17:00",end:"18:00",name:"Ben: Art class",who:"ben",icon:"🎨"},
+    // Apr 11
+    {date:"2026-04-11",time:"11:20",end:"13:00",name:"T-ball Picture Day & Game",who:"ben",icon:"📸",location:"Pine Grove Field (C)"},
+    // Apr 12
+    {date:"2026-04-12",time:"08:00",end:"10:00",name:"Baseball GAME",who:"ethan",icon:"⚾",location:"Witter Softball"},
+    {date:"2026-04-12",time:"09:30",end:"11:00",name:"Church",who:"jen",icon:"⛪"},
+    // Apr 13
+    {date:"2026-04-13",time:"10:10",end:"11:00",name:"Botox",who:"jen",icon:"💉"},
+    {date:"2026-04-13",time:"15:40",end:"16:10",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-04-13",time:"18:00",end:"19:00",name:"Trash night",who:"tom",icon:"🗑️"},
+    // Apr 14
+    {date:"2026-04-14",time:null,name:"SSP: Daddy & Me Night",who:"ben",icon:"👨‍👦",allDay:true},
+    {date:"2026-04-14",time:"09:15",end:"10:30",name:"Walk with Elaine",who:"jen",icon:"🚶‍♀️",location:"Wilder / Lafayette Reservoir"},
+    {date:"2026-04-14",time:"17:00",end:"18:00",name:"Baseball practice",who:"ethan",icon:"⚾"},
+    // Apr 15
+    {date:"2026-04-15",time:"10:30",end:"11:30",name:"Microneedling 3",who:"jen",icon:"✨"},
+    {date:"2026-04-15",time:"15:40",end:"16:15",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-04-15",time:"18:00",end:"20:00",name:"Mom's Birthday",who:"tom",icon:"🎂"},
+    // Apr 16
+    {date:"2026-04-16",time:"17:00",end:"18:00",name:"Ben: T-ball",who:"ben",icon:"⚾"},
+    // Apr 17
+    {date:"2026-04-17",time:"15:40",end:"16:15",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-04-17",time:"17:00",end:"18:00",name:"Ben: Art class",who:"ben",icon:"🎨"},
+    // Apr 19
+    {date:"2026-04-19",time:null,name:"Theo's birthday",who:"family",icon:"🎂",allDay:true},
+    {date:"2026-04-19",time:"09:30",end:"11:00",name:"Church",who:"jen",icon:"⛪"},
+    {date:"2026-04-19",time:"14:00",end:"16:00",name:"Baseball GAME",who:"ethan",icon:"⚾",location:"Witter Softball"},
+    // Apr 20
+    {date:"2026-04-20",time:"15:40",end:"16:10",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-04-20",time:"18:00",end:"19:00",name:"Trash night",who:"tom",icon:"🗑️"},
+    // Apr 21
+    {date:"2026-04-21",time:"09:15",end:"10:30",name:"Walk with Elaine",who:"jen",icon:"🚶‍♀️"},
+    {date:"2026-04-21",time:"17:00",end:"18:00",name:"Baseball practice",who:"ethan",icon:"⚾"},
+    {date:"2026-04-21",time:"18:00",end:"19:00",name:"HR: K-8 Academic Program Event",who:"family",icon:"🏫"},
+    // Apr 23
+    {date:"2026-04-23",time:"17:00",end:"18:00",name:"Ben: T-ball",who:"ben",icon:"⚾"},
+    // Apr 24
+    {date:"2026-04-24",time:"15:40",end:"16:15",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-04-24",time:"17:00",end:"18:00",name:"Ben: Art class",who:"ben",icon:"🎨"},
+    // Apr 26
+    {date:"2026-04-26",time:"09:30",end:"11:00",name:"Church",who:"jen",icon:"⛪"},
+    {date:"2026-04-26",time:"12:00",end:"14:00",name:"Baseball GAME",who:"ethan",icon:"⚾",location:"Witter Softball"},
+    // Apr 27
+    {date:"2026-04-27",time:"09:00",end:"12:00",name:"HR: Oakland Children's Hospital chaperone",who:"jen",icon:"🏥"},
+    {date:"2026-04-27",time:"12:00",end:"13:00",name:"Trex Birthday",who:"tom",icon:"🎂"},
+    {date:"2026-04-27",time:"15:40",end:"16:10",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-04-27",time:"18:00",end:"19:00",name:"Trash night",who:"tom",icon:"🗑️"},
+    // Apr 28
+    {date:"2026-04-28",time:"09:15",end:"10:30",name:"Walk with Elaine",who:"jen",icon:"🚶‍♀️"},
+    {date:"2026-04-28",time:"13:00",end:"14:00",name:"Physical with Dr. Tim",who:"jen",icon:"🩺"},
+    {date:"2026-04-28",time:"17:00",end:"18:00",name:"Baseball practice",who:"ethan",icon:"⚾"},
+    // Apr 30
+    {date:"2026-04-30",time:null,name:"HR: Art Show — bring 1 dozen cookies",who:"ethan",icon:"🍪",allDay:true},
+    {date:"2026-04-30",time:"16:00",end:"17:30",name:"HR: Art Show",who:"family",icon:"🎨"},
+    {date:"2026-04-30",time:"17:00",end:"18:00",name:"Ben: T-ball",who:"ben",icon:"⚾"},
+    // May 1
+    {date:"2026-05-01",time:"15:40",end:"16:15",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-05-01",time:"17:00",end:"18:00",name:"Ben: Art class",who:"ben",icon:"🎨"},
+    // May 2
+    {date:"2026-05-02",time:"10:10",end:"11:30",name:"Ben: Field B",who:"ben",icon:"⚾"},
+    {date:"2026-05-02",time:"16:00",end:"18:00",name:"Baseball GAME",who:"ethan",icon:"⚾",location:"Hampton Field"},
+    // May 3
+    {date:"2026-05-03",time:"09:30",end:"11:00",name:"Church",who:"jen",icon:"⛪"},
+    // May 4
+    {date:"2026-05-04",time:"10:45",end:"11:30",name:"HR: Book sale cashier training",who:"jen",icon:"📚"},
+    {date:"2026-05-04",time:"11:30",end:"13:00",name:"HR: Book sale cashier",who:"jen",icon:"📚"},
+    {date:"2026-05-04",time:"15:40",end:"16:10",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    // May 7
+    {date:"2026-05-07",time:null,name:"Alexander's Birthday",who:"tom",icon:"🎂",allDay:true},
+    {date:"2026-05-07",time:"17:00",end:"18:00",name:"Ben: T-ball",who:"ben",icon:"⚾"},
+    // May 8
+    {date:"2026-05-08",time:"15:30",end:"16:30",name:"Ethan's 7yr physical",who:"ethan",icon:"🩺"},
+    {date:"2026-05-08",time:"15:40",end:"16:15",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    {date:"2026-05-08",time:"17:00",end:"18:00",name:"Ben: Art class",who:"ben",icon:"🎨"},
+];
+
+const ALERTS = [
+    {date:"Apr 6–10",title:"HR Spring Break — plan for Ethan?",detail:"Ethan is off school but Ben is still at SSP. What's the plan for Ethan during the day?",severity:"high"},
+    {date:"Apr 10",title:"Jen in Pasadena — kid pickup?",detail:"Jen has ophthalmology in Pasadena at 8am. She may be unavailable for afternoon pickup. Tom or alternate needed.",severity:"high"},
+    {date:"Apr 12",title:"Baseball GAME 8am vs Church 9:30am",detail:"Ethan's game at Witter Softball may overlap with church. Check exact timing.",severity:"medium"},
+    {date:"Apr 14",title:"SSP Daddy & Me Night",detail:"Tom needs to attend with Ben at St. Stephen's. Block the evening.",severity:"high"},
+    {date:"Apr 15",title:"Mom's Birthday",detail:"Plan dinner or celebration. Currently just a calendar block 6–8pm.",severity:"medium"},
+    {date:"Apr 21",title:"HR Academic Program event 6pm",detail:"Parent event at Head Royce. Who attends? Need childcare for kids if both go.",severity:"medium"},
+    {date:"Apr 30",title:"HR Art Show — cookies needed",detail:"Need to bake/buy 1 dozen cookies for the Art Show. Art Show at 4pm.",severity:"medium"},
+    {date:"May 8",title:"Ethan physical vs Taekwondo conflict",detail:"Ethan's 7yr physical at 3:30pm directly overlaps with Taekwondo at 3:40pm. Skip TKD or reschedule physical.",severity:"high"},
+    {date:"Jul 7–13",title:"10th Anniversary — no plans yet",detail:"Originally considered Bora Bora but never booked. If you want to do something for the anniversary, need to start planning.",severity:"medium"},
+];
+
+const TRIPS = [
+    {dates:"Apr 6–10",name:"HR Spring Break Window",duration:"5 days",detail:"Ethan is off school. Ben still at SSP. Could do a dad-and-Ethan trip, or pull Ben from SSP for a family trip. Jen has Pasadena appointment Apr 10.",tag:"plan",tagLabel:"Needs Plan"},
+    {dates:"May 23–25",name:"Memorial Day Weekend",duration:"3 days",detail:"Long weekend. Both schools likely off Monday. Good for a short getaway — Tahoe, Carmel, Napa, Monterey.",tag:"open",tagLabel:"Available"},
+    {dates:"Late June",name:"Post-School / Pre-Bora Bora",duration:"Flexible",detail:"After school ends and before Bora Bora (Jul 7). Could do a family trip or stay local for camps. Need to confirm school end dates.",tag:"open",tagLabel:"Available"},
+    {dates:"Jul 7–13",name:"10th Anniversary Trip",duration:"TBD",detail:"Originally considered Bora Bora but not booked. Still an open window for an anniversary trip if desired. Need to decide destination and whether kids join.",tag:"plan",tagLabel:"Needs Plan"},
+];
+
+const ROUTINE = [
+    {day:"Sunday",events:[{time:"9:30am",name:"Church",who:"jen",icon:"⛪"}]},
+    {day:"Monday",events:[
+        {time:"9:15am",name:"Walk with Elaine",who:"jen",icon:"🚶‍♀️"},
+        {time:"3:40pm",name:"Taekwondo",who:"ethan",icon:"🥋"},
+        {time:"5:00pm",name:"Baseball practice",who:"ethan",icon:"⚾"},
+        {time:"6:00pm",name:"Trash night",who:"tom",icon:"🗑️"},
+    ]},
+    {day:"Tuesday",events:[
+        {time:"3:40pm",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    ]},
+    {day:"Wednesday",events:[
+        {time:"3:40pm",name:"Taekwondo",who:"ethan",icon:"🥋"},
+        {time:"5:00pm",name:"Ben: T-ball",who:"ben",icon:"⚾"},
+    ]},
+    {day:"Thursday",events:[
+        {time:"3:40pm",name:"Taekwondo",who:"ethan",icon:"🥋"},
+        {time:"5:00pm",name:"Ben: Art class",who:"ben",icon:"🎨"},
+    ]},
+    {day:"Friday",events:[
+        {time:"3:40pm",name:"Taekwondo",who:"ethan",icon:"🥋"},
+    ]},
+    {day:"Saturday",events:[
+        {time:"Varies",name:"Baseball / T-ball games",who:"family",icon:"⚾"},
+    ]},
+];
+
+// ===== HELPERS =====
+const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function getToday() {
+    return new Date().toISOString().split('T')[0];
+}
+
+function formatDate(dateStr) {
+    const d = new Date(dateStr + 'T12:00:00');
+    return `${MONTHS[d.getMonth()]} ${d.getDate()}`;
+}
+
+function getDayName(dateStr) {
+    const d = new Date(dateStr + 'T12:00:00');
+    return DAYS[d.getDay()];
+}
+
+function formatTime(timeStr) {
+    if (!timeStr) return null;
+    const [h, m] = timeStr.split(':').map(Number);
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const hour = h % 12 || 12;
+    return {display: `${hour}:${m.toString().padStart(2,'0')}`, ampm};
+}
+
+function getWeekDates(refDate) {
+    const d = new Date(refDate + 'T12:00:00');
+    const day = d.getDay();
+    const dates = [];
+    for (let i = -day; i < 7 - day; i++) {
+        const nd = new Date(d);
+        nd.setDate(nd.getDate() + i);
+        dates.push(nd.toISOString().split('T')[0]);
+    }
+    return dates;
+}
+
+let activePersons = new Set(['tom','jen','ethan','ben','family']);
+
+function togglePerson(el) {
+    const person = el.dataset.person;
+    if (activePersons.has(person)) {
+        activePersons.delete(person);
+        el.classList.remove('active');
+    } else {
+        activePersons.add(person);
+        el.classList.add('active');
+    }
+    renderTodayView();
+}
+
+// ===== RENDERING =====
+function renderKPIs() {
+    const today = getToday();
+    const weekDates = getWeekDates(today);
+    const todayEvents = EVENTS.filter(e => e.date === today);
+    const weekEvents = EVENTS.filter(e => weekDates.includes(e.date));
+    const alertCount = ALERTS.filter(a => a.severity === 'high').length;
+
+    const nextTrip = TRIPS[0];
+
+    document.getElementById('kpi-row').innerHTML = `
+        <div class="kpi-card">
+            <div class="kpi-label">Today</div>
+            <div class="kpi-value">${todayEvents.length}</div>
+            <div class="kpi-sub">events</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">This Week</div>
+            <div class="kpi-value">${weekEvents.length}</div>
+            <div class="kpi-sub">events</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Alerts</div>
+            <div class="kpi-value" style="color:var(--red)">${alertCount}</div>
+            <div class="kpi-sub">need action</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Next Trip</div>
+            <div class="kpi-value" style="font-size:16px;margin-top:4px">🌴</div>
+            <div class="kpi-sub">${nextTrip.dates}</div>
+        </div>
+    `;
+}
+
+function renderTodayView() {
+    const today = getToday();
+    const dates = [];
+    for (let i = 0; i < 14; i++) {
+        const d = new Date(today + 'T12:00:00');
+        d.setDate(d.getDate() + i);
+        dates.push(d.toISOString().split('T')[0]);
+    }
+
+    let html = '';
+    dates.forEach(date => {
+        const dayEvents = EVENTS.filter(e => e.date === date && (activePersons.has(e.who) || e.who === 'family'));
+        if (dayEvents.length === 0) return;
+
+        const isToday = date === today;
+        html += `<div class="day-group">`;
+        html += `<div class="day-label">${isToday ? 'TODAY — ' : ''}${getDayName(date)} <span class="day-date">${formatDate(date)}</span></div>`;
+
+        dayEvents.sort((a, b) => {
+            if (!a.time && !b.time) return 0;
+            if (!a.time) return -1;
+            if (!b.time) return 1;
+            return a.time.localeCompare(b.time);
+        });
+
+        dayEvents.forEach(ev => {
+            const t = formatTime(ev.time);
+            html += `
+            <div class="event-card">
+                <div class="event-time-col">
+                    ${t ? `<div class="event-time">${t.display}</div><div class="event-ampm">${t.ampm}</div>` : `<div class="event-allday">All Day</div>`}
+                </div>
+                <div class="event-dot dot-${ev.who}"></div>
+                <div class="event-details">
+                    <div class="event-name">${ev.icon} ${ev.name}</div>
+                    ${ev.location ? `<div class="event-meta">📍 ${ev.location}</div>` : ''}
+                    <span class="event-who who-${ev.who}">${ev.who === 'family' ? 'Family' : ev.who.charAt(0).toUpperCase() + ev.who.slice(1)}</span>
+                </div>
+            </div>`;
+        });
+        html += `</div>`;
+    });
+
+    if (!html) html = '<div class="empty-day">No events for the selected filters</div>';
+    document.getElementById('today-events').innerHTML = html;
+}
+
+function renderWeekView() {
+    const today = getToday();
+    const weekDates = getWeekDates(today);
+
+    let html = '';
+    weekDates.forEach(date => {
+        const dayEvents = EVENTS.filter(e => e.date === date);
+        const isToday = date === today;
+
+        html += `<div class="day-group">`;
+        html += `<div class="day-label">${isToday ? '● ' : ''}${getDayName(date)} <span class="day-date">${formatDate(date)}</span></div>`;
+
+        if (dayEvents.length === 0) {
+            html += `<div class="empty-day">No events</div>`;
+        } else {
+            dayEvents.sort((a, b) => {
+                if (!a.time && !b.time) return 0;
+                if (!a.time) return -1;
+                if (!b.time) return 1;
+                return a.time.localeCompare(b.time);
+            });
+
+            dayEvents.forEach(ev => {
+                const t = formatTime(ev.time);
+                html += `
+                <div class="event-card">
+                    <div class="event-time-col">
+                        ${t ? `<div class="event-time">${t.display}</div><div class="event-ampm">${t.ampm}</div>` : `<div class="event-allday">All Day</div>`}
+                    </div>
+                    <div class="event-dot dot-${ev.who}"></div>
+                    <div class="event-details">
+                        <div class="event-name">${ev.icon} ${ev.name}</div>
+                        ${ev.location ? `<div class="event-meta">📍 ${ev.location}</div>` : ''}
+                        <span class="event-who who-${ev.who}">${ev.who === 'family' ? 'Family' : ev.who.charAt(0).toUpperCase() + ev.who.slice(1)}</span>
+                    </div>
+                </div>`;
+            });
+        }
+        html += `</div>`;
+    });
+
+    document.getElementById('week-events').innerHTML = html;
+}
+
+function renderAlerts() {
+    const highCount = ALERTS.filter(a => a.severity === 'high').length;
+    document.getElementById('alert-count').textContent = `${highCount} urgent`;
+
+    let html = '';
+    ALERTS.sort((a, b) => {
+        const sev = {high: 0, medium: 1, low: 2};
+        return sev[a.severity] - sev[b.severity];
+    });
+
+    ALERTS.forEach(alert => {
+        const cls = alert.severity === 'high' ? '' : ' warning';
+        html += `
+        <div class="alert-card${cls}">
+            <div class="alert-title">${alert.title}</div>
+            <div class="alert-detail">${alert.detail}</div>
+            <div class="alert-date">📅 ${alert.date}</div>
+        </div>`;
+    });
+
+    document.getElementById('alerts-list').innerHTML = html;
+}
+
+function renderTrips() {
+    let html = '';
+    TRIPS.forEach(trip => {
+        html += `
+        <div class="trip-card ${trip.tag === 'booked' ? 'booked' : trip.tag === 'plan' ? 'needs-plan' : 'available'}">
+            <div class="trip-dates">${trip.dates} · ${trip.duration}</div>
+            <div class="trip-name">${trip.name}</div>
+            <div class="trip-detail">${trip.detail}</div>
+            <span class="trip-tag tag-${trip.tag}">${trip.tagLabel}</span>
+        </div>`;
+    });
+    document.getElementById('trips-list').innerHTML = html;
+}
+
+function renderRoutine() {
+    let html = '';
+    ROUTINE.forEach(day => {
+        html += `<div class="day-group">`;
+        html += `<div class="day-label">${day.day}</div>`;
+        day.events.forEach(ev => {
+            html += `
+            <div class="event-card">
+                <div class="event-time-col">
+                    <div class="event-time" style="font-size:12px">${ev.time}</div>
+                </div>
+                <div class="event-dot dot-${ev.who}"></div>
+                <div class="event-details">
+                    <div class="event-name">${ev.icon} ${ev.name}</div>
+                    <span class="event-who who-${ev.who}">${ev.who === 'family' ? 'Family' : ev.who.charAt(0).toUpperCase() + ev.who.slice(1)}</span>
+                </div>
+            </div>`;
+        });
+        html += `</div>`;
+    });
+    document.getElementById('routine-list').innerHTML = html;
+}
+
+function renderActivityChart() {
+    const ctx = document.getElementById('activity-chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [
+                {label:'Tom', data:[1,0,0,0,0,0,0], backgroundColor:'rgba(96,165,250,0.7)', borderRadius:4},
+                {label:'Jen', data:[1,0,0,0,0,0,1], backgroundColor:'rgba(244,114,182,0.7)', borderRadius:4},
+                {label:'Ethan', data:[2,1,1,1,1,0,0], backgroundColor:'rgba(52,211,153,0.7)', borderRadius:4},
+                {label:'Ben', data:[0,0,1,1,0,1,0], backgroundColor:'rgba(251,191,36,0.7)', borderRadius:4},
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: '#8888a0', usePointStyle: true, padding: 16, font: {size: 11} }
+                }
+            },
+            scales: {
+                x: { stacked: true, grid: {display: false}, ticks: {color: '#8888a0'} },
+                y: { stacked: true, grid: {color: 'rgba(255,255,255,0.04)'}, ticks: {color: '#8888a0', stepSize: 1}, title: {display: true, text: 'Activities', color: '#8888a0'} }
+            }
+        }
+    });
+}
+
+// ===== NAVIGATION =====
+function switchView(el) {
+    const view = el.dataset.view;
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+    document.getElementById('view-' + view).classList.add('active');
+    el.classList.add('active');
+    document.querySelector(`.tab[data-view="${view}"]`).classList.add('active');
+
+    if (view === 'routine') renderActivityChart();
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        const view = this.dataset.view;
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+        document.getElementById('view-' + view).classList.add('active');
+        this.classList.add('active');
+        document.querySelector(`.nav-item[data-view="${view}"]`).classList.add('active');
+
+        if (view === 'routine') renderActivityChart();
+    });
+});
+
+// ===== INIT =====
+const now = new Date();
+document.getElementById('header-date').innerHTML = `${DAYS[now.getDay()]}<br>${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+
+renderKPIs();
+renderTodayView();
+renderWeekView();
+renderAlerts();
+renderTrips();
+renderRoutine();
+</script>
+</body>
+</html>
