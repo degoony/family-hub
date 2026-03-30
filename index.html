@@ -1,6 +1,79 @@
 <!DOCTYPE html>
-<html><head>
-<meta http-equiv="refresh" content="0;url=briefing.html">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youn Family</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Family">
-</head><body></body></html>
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Youn Family">
+<meta name="theme-color" content="#f5f0e8">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background: #f5f0e8; color: #2d2517;
+  padding: 20px 16px 40px; max-width: 480px; margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+h1 { font-size: 22px; font-weight: 700; color: #2d2517; margin-bottom: 4px; }
+.subtitle { font-size: 12px; color: #8b7e6a; margin-bottom: 24px; }
+.grid { display: flex; flex-direction: column; gap: 10px; }
+.card {
+  display: flex; align-items: center; gap: 14px;
+  background: #ffffff; border: 1px solid #e8e0d0;
+  border-radius: 12px; padding: 14px 16px;
+  text-decoration: none; color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.card:active { background: #faf7f2; }
+.card-icon { font-size: 28px; flex-shrink: 0; }
+.card-body { flex: 1; min-width: 0; }
+.card-title { font-size: 15px; font-weight: 600; color: #2d2517; }
+.card-desc { font-size: 12px; color: #5c5243; margin-top: 2px; }
+.card-meta { font-size: 11px; color: #8b7e6a; margin-top: 4px; }
+.badge {
+  display: inline-block; font-size: 9px; font-weight: 700;
+  background: #f0ebe0; color: #8b7e6a; border-radius: 4px;
+  padding: 1px 5px; margin-left: 6px; vertical-align: middle;
+}
+</style>
+</head>
+<body>
+<h1>Youn Family</h1>
+<div class="subtitle">Last published Mar 30, 2026 at 02:18 PM</div>
+<div class="grid">
+<a class="card" href="family-dashboard.html">
+  <div class="card-icon">📋</div>
+  <div class="card-body">
+    <div class="card-title">Family Dashboard</div>
+    <div class="card-desc">Weekly schedule, activities, and family ops</div>
+    <div class="card-meta">Updated Mar 30, 02:00 PM</div>
+  </div>
+</a><a class="card" href="family-schedule.xlsx">
+  <div class="card-icon">📅</div>
+  <div class="card-body">
+    <div class="card-title">Family Schedule<span class="badge">XLSX</span></div>
+    <div class="card-desc">Apr–May 2026 schedule spreadsheet</div>
+    <div class="card-meta">Updated Mar 30, 01:58 PM</div>
+  </div>
+</a><a class="card" href="daily-briefing.html">
+  <div class="card-icon">☀️</div>
+  <div class="card-body">
+    <div class="card-title">Daily Briefing</div>
+    <div class="card-desc">Morning briefing — calendar, action items, reminders</div>
+    <div class="card-meta">Updated Mar 30, 07:47 AM</div>
+  </div>
+</a><a class="card" href="meal-planner.html">
+  <div class="card-icon">🍽️</div>
+  <div class="card-body">
+    <div class="card-title">Meal Planner</div>
+    <div class="card-desc">Weekly dinner plan, recipes, and Whole Foods grocery list</div>
+    <div class="card-meta">Updated Mar 30, 02:18 PM</div>
+  </div>
+</a>
+</div>
+</body>
+</html>
