@@ -4,34 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Youn Family">
     <title>Youn Family HQ</title>
+    <script>
+    (function(){var c=document.createElement('canvas');c.width=c.height=180;var x=c.getContext('2d'),r=38;x.beginPath();x.moveTo(r,0);x.lineTo(180-r,0);x.quadraticCurveTo(180,0,180,r);x.lineTo(180,180-r);x.quadraticCurveTo(180,180,180-r,180);x.lineTo(r,180);x.quadraticCurveTo(0,180,0,180-r);x.lineTo(0,r);x.quadraticCurveTo(0,0,r,0);x.closePath();x.fillStyle='#f5f0e8';x.fill();x.font='95px serif';x.textAlign='center';x.textBaseline='middle';x.fillText('📋',90,95);var l=document.createElement('link');l.rel='apple-touch-icon';l.href=c.toDataURL();document.head.appendChild(l);})();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
     <style>
         :root {
-            --bg: #0f0f13;
-            --bg-card: #1a1a24;
-            --bg-card-hover: #22222e;
-            --text: #e8e8ed;
-            --text-dim: #8888a0;
-            --text-bright: #ffffff;
-            --accent: #6C63FF;
-            --accent-glow: rgba(108, 99, 255, 0.15);
-            --green: #34D399;
-            --red: #F87171;
-            --orange: #FBBF24;
-            --blue: #60A5FA;
-            --pink: #F472B6;
-            --cyan: #22D3EE;
-            --border: rgba(255,255,255,0.06);
+            --bg: #f5f0e8;
+            --bg-card: #ffffff;
+            --bg-card-hover: #faf7f2;
+            --text: #2d2517;
+            --text-dim: #8b7e6a;
+            --text-bright: #2d2517;
+            --accent: #5b21b6;
+            --accent-glow: rgba(91, 33, 182, 0.08);
+            --green: #065f46;
+            --red: #991b1b;
+            --orange: #92400e;
+            --blue: #1e40af;
+            --pink: #9d174d;
+            --cyan: #0e7490;
+            --border: #e8e0d0;
             --radius: 16px;
             --radius-sm: 10px;
-            --shadow: 0 4px 24px rgba(0,0,0,0.3);
-            --tom: #60A5FA;
-            --jen: #F472B6;
-            --ethan: #34D399;
-            --ben: #FBBF24;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06);
+            --tom: #1e40af;
+            --jen: #9d174d;
+            --ethan: #065f46;
+            --ben: #92400e;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -40,8 +43,9 @@
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.5;
+            line-height: 1.6;
             min-height: 100vh;
+            font-size: 16px;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -82,7 +86,7 @@
         }
 
         .header-subtitle {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--accent);
             font-weight: 500;
         }
@@ -101,7 +105,7 @@
         .tab {
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 600;
             white-space: nowrap;
             cursor: pointer;
@@ -143,7 +147,7 @@
         }
 
         .kpi-label {
-            font-size: 11px;
+            font-size: 15px;
             color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -157,7 +161,7 @@
         }
 
         .kpi-sub {
-            font-size: 11px;
+            font-size: 15px;
             color: var(--text-dim);
             margin-top: 2px;
         }
@@ -177,7 +181,7 @@
         }
 
         .section-badge {
-            font-size: 11px;
+            font-size: 15px;
             padding: 4px 10px;
             border-radius: 12px;
             font-weight: 600;
@@ -190,7 +194,7 @@
         .day-group { margin-bottom: 20px; }
 
         .day-label {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-dim);
             text-transform: uppercase;
@@ -225,18 +229,18 @@
         }
 
         .event-time {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--text);
         }
 
         .event-ampm {
-            font-size: 10px;
+            font-size: 14px;
             color: var(--text-dim);
         }
 
         .event-allday {
-            font-size: 11px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--accent);
             text-transform: uppercase;
@@ -266,14 +270,14 @@
         }
 
         .event-meta {
-            font-size: 12px;
+            font-size: 14px;
             color: var(--text-dim);
             margin-top: 2px;
         }
 
         .event-who {
             display: inline-block;
-            font-size: 10px;
+            font-size: 14px;
             font-weight: 700;
             padding: 2px 7px;
             border-radius: 6px;
@@ -317,13 +321,13 @@
         }
 
         .alert-detail {
-            font-size: 12px;
+            font-size: 14px;
             color: var(--text-dim);
             line-height: 1.5;
         }
 
         .alert-date {
-            font-size: 11px;
+            font-size: 15px;
             color: var(--text-dim);
             margin-top: 6px;
             font-weight: 600;
@@ -337,7 +341,7 @@
         }
 
         .week-time {
-            font-size: 11px;
+            font-size: 15px;
             color: var(--text-dim);
             text-align: right;
             padding: 8px 8px 8px 0;
@@ -351,7 +355,7 @@
         }
 
         .week-event {
-            font-size: 12px;
+            font-size: 14px;
             padding: 4px 8px;
             border-radius: 6px;
             margin-bottom: 4px;
@@ -383,7 +387,7 @@
         .trip-card.needs-plan::before { background: var(--orange); }
 
         .trip-dates {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--accent);
             font-weight: 600;
             margin-bottom: 4px;
@@ -397,14 +401,14 @@
         }
 
         .trip-detail {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--text-dim);
             line-height: 1.6;
         }
 
         .trip-tag {
             display: inline-block;
-            font-size: 11px;
+            font-size: 15px;
             font-weight: 700;
             padding: 3px 10px;
             border-radius: 8px;
@@ -444,7 +448,7 @@
         .person-pill {
             padding: 6px 14px;
             border-radius: 16px;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
@@ -467,7 +471,7 @@
             text-align: center;
             padding: 20px;
             color: var(--text-dim);
-            font-size: 13px;
+            font-size: 15px;
         }
 
         /* Legend */
@@ -482,7 +486,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 12px;
+            font-size: 14px;
             color: var(--text-dim);
         }
 
@@ -498,7 +502,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(15,15,19,0.95);
+            background: rgba(245,240,232,0.97);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid var(--border);
@@ -528,7 +532,7 @@
         }
 
         .nav-label {
-            font-size: 10px;
+            font-size: 14px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
