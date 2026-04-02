@@ -1,134 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Briefing">
-<title>Youn Family Briefing — Mar 30</title>
-<script>
-(function(){var c=document.createElement('canvas');c.width=c.height=180;var x=c.getContext('2d'),r=38;x.beginPath();x.moveTo(r,0);x.lineTo(180-r,0);x.quadraticCurveTo(180,0,180,r);x.lineTo(180,180-r);x.quadraticCurveTo(180,180,180-r,180);x.lineTo(r,180);x.quadraticCurveTo(0,180,0,180-r);x.lineTo(0,r);x.quadraticCurveTo(0,0,r,0);x.closePath();x.fillStyle='#fef3c7';x.fill();x.font='95px serif';x.textAlign='center';x.textBaseline='middle';x.fillText('☀️',90,95);var l=document.createElement('link');l.rel='apple-touch-icon';l.href=c.toDataURL();document.head.appendChild(l);})();
-</script>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #f5f0e8; color: #3d3929; font-family: 'Söhne', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; padding: 16px; max-width: 480px; margin: 0 auto; line-height: 1.6; font-size: 14px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Youn Family Briefing — Wed Apr 1</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .header { text-align: center; padding: 20px 0 16px; margin-bottom: 16px; }
-  .header h1 { font-size: 16px; font-weight: 600; color: #2d2517; letter-spacing: 0.3px; }
-  .header .date { font-size: 13px; color: #8b7e6a; margin-top: 4px; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f0e8;
+      color: #2d2517;
+      font-size: 15px;
+      line-height: 1.5;
+      padding: 16px;
+    }
 
-  .alert { background: #fef3c7; border: 1px solid #f0d68a; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; }
-  .alert .label { color: #92400e; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .alert .text { color: #78350f; margin-top: 4px; font-size: 13px; }
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+    }
 
-  .card { background: #ffffff; border: 1px solid #e8e0d0; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
-  .card-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #8b7e6a; margin-bottom: 12px; }
+    /* Header */
+    .header {
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2d2517;
+    }
+    .header .date {
+      font-size: 13px;
+      color: #8b7e6a;
+      margin-top: 2px;
+    }
 
-  .item { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f0ebe0; }
-  .item:last-child { border-bottom: none; }
+    /* Alert Banner */
+    .alert-banner {
+      background: #fef9c3;
+      border: 1px solid #f59e0b;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .alert-banner .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .alert-banner .text { font-size: 14px; font-weight: 600; color: #78350f; }
+    .alert-banner .sub { font-size: 12px; font-weight: 400; color: #92400e; margin-top: 2px; }
 
-  .tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
-  .tag-ethan { background: #e0e7ff; color: #3730a3; }
-  .tag-ben { background: #d1fae5; color: #065f46; }
-  .tag-family { background: #ede9fe; color: #5b21b6; }
+    /* Cards */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e8e0d0;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .card h2 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #8b7e6a;
+      margin-bottom: 10px;
+    }
 
-  .item-text { font-size: 14px; color: #2d2517; }
-  .item-time { font-size: 12px; color: #8b7e6a; margin-top: 1px; }
+    /* Event rows */
+    .event {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f0ebe1;
+    }
+    .event:last-child { border-bottom: none; }
+    .event .time {
+      font-size: 12px;
+      color: #8b7e6a;
+      min-width: 52px;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .event .detail { flex: 1; }
+    .event .title { font-size: 14px; font-weight: 500; color: #2d2517; }
+    .event .note { font-size: 12px; color: #5c5243; margin-top: 2px; }
 
-  .week-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -16px; padding: 0 16px; }
-  table { width: 100%; min-width: 420px; border-collapse: collapse; font-size: 12px; }
-  th { text-align: left; padding: 8px 6px; color: #8b7e6a; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #e8e0d0; }
-  td { padding: 8px 6px; border-bottom: 1px solid #f0ebe0; color: #5c5243; vertical-align: top; line-height: 1.4; }
-  td:first-child { color: #2d2517; font-weight: 500; white-space: nowrap; }
-  tr.today td { color: #2d2517; background: #faf6ee; }
-  .highlight { color: #b45309; font-weight: 500; }
+    /* Tags */
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 4px;
+      padding: 1px 6px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    .tag-ethan { background: #e0e7ff; color: #3730a3; }
+    .tag-ben   { background: #d1fae5; color: #065f46; }
+    .tag-family{ background: #ede9fe; color: #5b21b6; }
+    .tag-jen   { background: #fce7f3; color: #9d174d; }
 
-  .next-item { padding: 5px 0; font-size: 13px; color: #5c5243; }
-  .next-item::before { content: "›"; color: #8b7e6a; margin-right: 8px; font-weight: 600; }
+    /* Warning tag */
+    .tag-warn  { background: #fef3c7; color: #92400e; }
 
-  .action { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f0ebe0; }
-  .action:last-child { border-bottom: none; }
-  .urgency { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
-  .urgency-now { background: #fee2e2; color: #991b1b; }
-  .urgency-soon { background: #fef3c7; color: #92400e; }
-  .action-text { font-size: 13px; color: #2d2517; }
+    /* This Week table */
+    .week-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -2px;
+    }
+    table.week {
+      border-collapse: collapse;
+      min-width: 440px;
+      width: 100%;
+    }
+    table.week th {
+      font-size: 11px;
+      font-weight: 700;
+      color: #8b7e6a;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 8px;
+      text-align: left;
+      border-bottom: 1px solid #e8e0d0;
+      white-space: nowrap;
+    }
+    table.week td {
+      font-size: 12px;
+      color: #2d2517;
+      padding: 6px 8px;
+      vertical-align: top;
+      border-bottom: 1px solid #f0ebe1;
+    }
+    table.week tr:last-child td { border-bottom: none; }
+    table.week td:first-child {
+      font-weight: 600;
+      white-space: nowrap;
+      color: #5c5243;
+    }
 
-  .footer { text-align: center; padding: 20px 0 8px; font-size: 11px; color: #b8ad99; }
-</style>
+    /* Action Items */
+    .action-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0ebe1;
+    }
+    .action-item:last-child { border-bottom: none; }
+    .urgency-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .urgency-red  { background: #ef4444; }
+    .urgency-amber{ background: #f59e0b; }
+    .action-item .action-text { flex: 1; }
+    .action-item .action-title { font-size: 14px; font-weight: 500; color: #2d2517; }
+    .action-item .action-when  { font-size: 12px; color: #8b7e6a; margin-top: 1px; }
+    .action-badge {
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 2px 6px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .badge-red   { background: #fee2e2; color: #991b1b; }
+    .badge-amber { background: #fef3c7; color: #92400e; }
+
+    /* Heads Up bullets */
+    .heads-up-item {
+      padding: 6px 0;
+      border-bottom: 1px solid #f0ebe1;
+      font-size: 13px;
+      color: #5c5243;
+    }
+    .heads-up-item:last-child { border-bottom: none; }
+    .heads-up-item strong { color: #2d2517; }
+
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #b0a592;
+      margin-top: 16px;
+      padding-bottom: 8px;
+    }
+  </style>
 </head>
 <body>
+<div style="position:fixed;top:12px;left:12px;z-index:99999;"><a href="https://degoony.github.io/family-hub/" style="display:inline-flex;align-items:center;gap:4px;background:#2d2517;color:#f5f0e8;font-family:-apple-system,sans-serif;font-size:12px;font-weight:600;padding:6px 12px;border-radius:8px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,0.15);">&#8592; Hub</a></div>
+<div class="container">
 
-<div class="header">
-  <h1>Youn Family Briefing</h1>
-  <div class="date">Monday, March 30, 2026</div>
+  <!-- Header -->
+  <div class="header">
+    <h1>Youn Family Briefing</h1>
+    <div class="date">Wednesday, April 1, 2026 · Generated 8:43 AM</div>
+  </div>
+
+  <!-- Alert Banner -->
+  <div class="alert-banner">
+    <div class="icon">⚠️</div>
+    <div>
+      <div class="text">Ethan: bring classroom share item today</div>
+      <div class="sub">HR recurring reminder — item needs to go to school this morning</div>
+    </div>
+  </div>
+
+  <!-- Today -->
+  <div class="card">
+    <h2>Today — Wednesday Apr 1</h2>
+
+    <div class="event">
+      <div class="time">All day</div>
+      <div class="detail">
+        <div class="title">Ben: Spring Break / Minecraft Lego Camp <span class="tag tag-ben">Ben</span></div>
+        <div class="note">SSP break runs Mar 30–Apr 3. Last day of camp is Fri.</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="time">All day</div>
+      <div class="detail">
+        <div class="title">Ethan: Classroom share item <span class="tag tag-ethan">Ethan</span> <span class="tag tag-warn">⚠ Bring today</span></div>
+        <div class="note">Recurring HR reminder. Confirm item is packed.</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="time">All day</div>
+      <div class="detail">
+        <div class="title">Mom's BOA <span class="tag tag-jen">Jen</span></div>
+        <div class="note">Recurring financial task / reminder</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="time">3:40 PM</div>
+      <div class="detail">
+        <div class="title">Taekwondo <span class="tag tag-family">Family</span></div>
+        <div class="note">3:40–4:15 PM · Mon/Wed/Fri recurring</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tomorrow -->
+  <div class="card">
+    <h2>Tomorrow — Thursday Apr 2</h2>
+
+    <div class="event">
+      <div class="time">9:00 AM</div>
+      <div class="detail">
+        <div class="title">HR Spring Show <span class="tag tag-ethan">Ethan</span> <span class="tag tag-family">Family</span></div>
+        <div class="note">K-2 families invited · Tom &amp; Jen likely attending · ⚠ Not confirmed in calendar</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="time">5:00 PM</div>
+      <div class="detail">
+        <div class="title">T-ball practice <span class="tag tag-ben">Ben</span></div>
+        <div class="note">5:00–6:00 PM · Thursdays recurring</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- This Week -->
+  <div class="card">
+    <h2>This Week</h2>
+    <div class="week-scroll">
+      <table class="week">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th style="color:#3730a3">Ethan</th>
+            <th style="color:#065f46">Ben</th>
+            <th style="color:#5b21b6">Family</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Wed 4/1<br><span style="font-size:10px;color:#8b7e6a;font-weight:400">TODAY</span></td>
+            <td>School<br>Classroom share item ⚠</td>
+            <td>Spring Break<br>Lego Camp</td>
+            <td>Taekwondo 3:40</td>
+          </tr>
+          <tr>
+            <td>Thu 4/2</td>
+            <td>Spring Show 9am ⚠</td>
+            <td>Spring Break<br>Lego Camp</td>
+            <td>T-ball 5pm</td>
+          </tr>
+          <tr>
+            <td>Fri 4/3</td>
+            <td>School</td>
+            <td>Last day<br>break/camp</td>
+            <td>Show cleanup 10am<br>Taekwondo 3:40<br>Art class 5pm</td>
+          </tr>
+          <tr>
+            <td>Sat 4/4</td>
+            <td>—</td>
+            <td>—</td>
+            <td>Easter Egg Hunt 11am<br>Grandparents arrive OAK ✈</td>
+          </tr>
+          <tr>
+            <td>Sun 4/5</td>
+            <td>—</td>
+            <td>—</td>
+            <td>Easter Sunday 🙏 church 10am</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Next Week -->
+  <div class="card">
+    <h2>Next Week (Apr 6–12)</h2>
+
+    <div class="heads-up-item">
+      <strong>Mon Apr 6 – Wed Apr 8:</strong> Carmel Valley Ranch trip · Norman &amp; Janice Youn + Tom &amp; Jen (4 adults, 2 rooms). Confirmation #6583662.
+    </div>
+    <div class="heads-up-item">
+      <strong>Apr 6–10:</strong> HR Spring Break — Ethan home all week. Ben also home (skipping SSP).
+    </div>
+    <div class="heads-up-item">
+      <strong>Mon Apr 6:</strong> Ethan — Firecracker Math 3:30–4:30 PM <em>(confirm if still on during CVR trip)</em> · Trash out reminder (Tom)
+    </div>
+    <div class="heads-up-item">
+      <strong>Sat Apr 11:</strong> Grandparents depart OAK → BUR · Need airport drop-off. Flight time TBD.
+    </div>
+  </div>
+
+  <!-- Action Items -->
+  <div class="card">
+    <h2>Action Items</h2>
+
+    <div class="action-item">
+      <div class="urgency-dot urgency-red"></div>
+      <div class="action-text">
+        <div class="action-title">Confirm Spring Show attendance (Apr 2, 9am)</div>
+        <div class="action-when">Event is in repo but NOT in Jen's calendar — verify plan</div>
+      </div>
+      <div class="action-badge badge-red">This Week</div>
+    </div>
+
+    <div class="action-item">
+      <div class="urgency-dot urgency-red"></div>
+      <div class="action-text">
+        <div class="action-title">Look up grandparent flight arrival time</div>
+        <div class="action-when">SW confirmation #C5XYJW · BUR → OAK on Sat Apr 4 · Time not in email</div>
+      </div>
+      <div class="action-badge badge-red">This Week</div>
+    </div>
+
+    <div class="action-item">
+      <div class="urgency-dot urgency-amber"></div>
+      <div class="action-text">
+        <div class="action-title">HR Summer Camp registration deadline</div>
+        <div class="action-when">April 15 — 2 weeks away</div>
+      </div>
+      <div class="action-badge badge-amber">Next Week</div>
+    </div>
+
+    <div class="action-item">
+      <div class="urgency-dot urgency-amber"></div>
+      <div class="action-text">
+        <div class="action-title">Grandparent airport drop-off — Apr 11</div>
+        <div class="action-when">OAK → BUR · Confirm flight time closer to date</div>
+      </div>
+      <div class="action-badge badge-amber">Next Week</div>
+    </div>
+  </div>
+
+  <!-- Heads Up -->
+  <div class="card">
+    <h2>Heads Up</h2>
+    <div class="heads-up-item">
+      <strong>Apr 15:</strong> HR Summer Camp registration deadline — 2 weeks out
+    </div>
+    <div class="heads-up-item">
+      <strong>May 4:</strong> HR Early Dismissal day
+    </div>
+    <div class="heads-up-item">
+      <strong>Fall 2026:</strong> Ben transitioning to Head Royce Kindergarten — enrollment planning ongoing
+    </div>
+  </div>
+
+  <div class="footer">
+    Youn Family Chief of Staff · Auto-generated from family_agent repo + Google Calendar
+  </div>
+
 </div>
-
-<div class="alert">
-  <div class="label">⚠ Deadline Today</div>
-  <div class="text">Carmel Valley Ranch cancellation deadline — trip confirmed (#6583662)</div>
-</div>
-
-<div class="card">
-  <div class="card-title">Today</div>
-  <div class="item">
-    <span class="tag tag-ben">BEN</span>
-    <div><div class="item-text">Minecraft Lego Camp starts</div><div class="item-time">SSP Spring Break · Mar 30 – Apr 3</div></div>
-  </div>
-  <div class="item">
-    <span class="tag tag-ethan">ETHAN</span>
-    <div><div class="item-text">Normal school day</div></div>
-  </div>
-  <div class="item">
-    <span class="tag tag-family">FAMILY</span>
-    <div><div class="item-text">Taekwondo</div><div class="item-time">3:40 – 4:15 pm</div></div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-title">This Week</div>
-  <div class="week-scroll">
-    <table>
-      <tr><th>Day</th><th>Ethan</th><th>Ben</th><th>Family</th></tr>
-      <tr class="today"><td>Mon 3/30</td><td>School</td><td>Lego Camp</td><td>TKD 3:40</td></tr>
-      <tr><td>Tue 3/31</td><td class="highlight">NO SCHOOL · Exploratorium</td><td>Lego Camp</td><td>Baseball 5–6</td></tr>
-      <tr><td>Wed 4/1</td><td>School</td><td>Lego Camp</td><td>TKD 3:40</td></tr>
-      <tr><td>Thu 4/2</td><td>School · Show cleanup 10a</td><td>Lego Camp</td><td>T-ball 5pm</td></tr>
-      <tr><td>Fri 4/3</td><td>School</td><td>Camp ends</td><td>TKD 3:40 · Art 5</td></tr>
-      <tr><td>Sat–Sun</td><td>—</td><td>—</td><td>—</td></tr>
-    </table>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-title">Next Week</div>
-  <div class="next-item">Tom's parents arrive</div>
-  <div class="next-item">Carmel Valley Ranch · Apr 6–8 · 2 nights, 2 rooms</div>
-  <div class="next-item">Both kids home all week (HR break + Ben off SSP)</div>
-  <div class="next-item">Back home Apr 9–10 · grandparents still visiting</div>
-</div>
-
-<div class="card">
-  <div class="card-title">Action Items</div>
-  <div class="action">
-    <span class="urgency urgency-now">THIS WEEK</span>
-    <div class="action-text">Confirm parent logistics for CVR — arrival/departure, driving arrangements</div>
-  </div>
-  <div class="action">
-    <span class="urgency urgency-now">THIS WEEK</span>
-    <div class="action-text">Kid activities week of Apr 6 — cancelled or grandparents covering?</div>
-  </div>
-  <div class="action">
-    <span class="urgency urgency-soon">NEXT WEEK</span>
-    <div class="action-text">Block Apr 14 evening — SSP Daddy & Me Night</div>
-  </div>
-  <div class="action">
-    <span class="urgency urgency-soon">NEXT WEEK</span>
-    <div class="action-text">Mom's birthday Apr 15 — no plan yet</div>
-  </div>
-</div>
-
-<div class="footer">Youn Family Agent · Mar 30, 2026</div>
-
 </body>
 </html>
