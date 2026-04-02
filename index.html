@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Youn Family</title>
+<title>Youn Family Office</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Youn Family">
+<meta name="apple-mobile-web-app-title" content="Youn Hub">
 <meta name="theme-color" content="#f5f0e8">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,9 +16,33 @@ body {
   padding: 20px 16px 40px; max-width: 480px; margin: 0 auto;
   -webkit-font-smoothing: antialiased;
 }
-h1 { font-size: 22px; font-weight: 700; color: #2d2517; margin-bottom: 4px; }
-.subtitle { font-size: 12px; color: #8b7e6a; margin-bottom: 24px; }
-.grid { display: flex; flex-direction: column; gap: 10px; }
+h1 { font-size: 22px; font-weight: 700; color: #2d2517; margin-bottom: 2px; }
+.subtitle { font-size: 12px; color: #8b7e6a; margin-bottom: 20px; }
+
+/* Sections */
+details { margin-bottom: 16px; }
+summary {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 700; color: #5c5243;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 8px 0 6px; cursor: pointer;
+  border-bottom: 2px solid #d8d0c0;
+  list-style: none;
+  -webkit-tap-highlight-color: transparent;
+}
+summary::-webkit-details-marker { display: none; }
+summary::before {
+  content: '\25B6'; font-size: 9px; color: #a08060;
+  transition: transform 0.2s;
+}
+details[open] > summary::before { transform: rotate(90deg); }
+summary .section-count {
+  font-size: 11px; font-weight: 500; color: #8b7e6a;
+  margin-left: auto;
+}
+
+/* Cards */
+.grid { display: flex; flex-direction: column; gap: 8px; padding-top: 10px; }
 .card {
   display: flex; align-items: center; gap: 14px;
   background: #ffffff; border: 1px solid #e8e0d0;
@@ -28,52 +52,286 @@ h1 { font-size: 22px; font-weight: 700; color: #2d2517; margin-bottom: 4px; }
   transition: background 0.15s;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
-.card:active { background: #faf7f2; }
-.card-icon { font-size: 28px; flex-shrink: 0; }
+a.card:active { background: #faf7f2; }
+.card-icon { font-size: 26px; flex-shrink: 0; width: 32px; text-align: center; }
 .card-body { flex: 1; min-width: 0; }
 .card-title { font-size: 15px; font-weight: 600; color: #2d2517; }
 .card-desc { font-size: 12px; color: #5c5243; margin-top: 2px; }
-.card-meta { font-size: 11px; color: #8b7e6a; margin-top: 4px; }
+.card-meta { font-size: 11px; color: #8b7e6a; margin-top: 4px; display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* Badges */
 .badge {
   display: inline-block; font-size: 9px; font-weight: 700;
-  background: #f0ebe0; color: #8b7e6a; border-radius: 4px;
-  padding: 1px 5px; margin-left: 6px; vertical-align: middle;
+  border-radius: 4px; padding: 1px 5px; vertical-align: middle;
+}
+.badge-update { background: #e8f5e9; color: #2e7d32; }
+.badge-manual { background: #f0ebe0; color: #8b7e6a; }
+.badge-encrypted { background: #e8e0d0; color: #6d5f4a; }
+.badge-data { background: #e3f2fd; color: #1565c0; }
+.badge-scheduled { background: #fff3e0; color: #e65100; }
+
+/* Locked cards (finance) */
+.card-locked {
+  opacity: 0.85;
+}
+.card-locked .card-title::before {
+  content: '\1F512 ';
+  font-size: 12px;
+}
+
+/* Info cards (non-clickable) */
+.card-info {
+  cursor: default;
+  opacity: 0.7;
+}
+
+/* Architecture diagram */
+.arch-box {
+  background: #ffffff; border: 1.5px dashed #c0b8a0;
+  border-radius: 12px; padding: 16px;
+  margin: 12px 0 16px; text-align: center;
+  font-size: 12px; color: #5c5243; line-height: 1.6;
+}
+.arch-box .arch-title {
+  font-size: 13px; font-weight: 700; color: #2d2517;
+  margin-bottom: 8px;
+}
+.arch-flow {
+  font-family: 'SF Mono', 'Menlo', monospace;
+  font-size: 11px; white-space: pre; color: #6d5f4a;
+  line-height: 1.5;
+}
+
+/* Infrastructure */
+.infra-item {
+  font-size: 12px; color: #5c5243; padding: 6px 0;
+  border-bottom: 1px solid #ece6d8;
+}
+.infra-item:last-child { border-bottom: none; }
+.infra-item code {
+  font-family: 'SF Mono', 'Menlo', monospace;
+  font-size: 11px; background: #f0ebe0; padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.footer {
+  font-size: 11px; color: #a09880; text-align: center;
+  margin-top: 24px; padding-top: 16px;
+  border-top: 1px solid #e8e0d0;
 }
 </style>
 </head>
 <body>
-<h1>Youn Family</h1>
-<div class="subtitle">Last published Mar 30, 2026 at 02:18 PM</div>
-<div class="grid">
-<a class="card" href="family-dashboard.html">
-  <div class="card-icon">📋</div>
-  <div class="card-body">
-    <div class="card-title">Family Dashboard</div>
-    <div class="card-desc">Weekly schedule, activities, and family ops</div>
-    <div class="card-meta">Updated Mar 30, 02:00 PM</div>
+
+<h1>Youn Family Office</h1>
+<div class="subtitle">Central Hub &mdash; All Projects &amp; Outputs</div>
+
+<!-- ═══════════ FAMILY ═══════════ -->
+<details open>
+  <summary>Family <span class="section-count">4 items</span></summary>
+  <div class="grid">
+    <a class="card" href="dashboard.html">
+      <div class="card-icon">&#x1F4CB;</div>
+      <div class="card-body">
+        <div class="card-title">Family Dashboard</div>
+        <div class="card-desc">Weekly schedule, activities, and family ops</div>
+        <div class="card-meta">
+          <span class="badge badge-manual">MANUAL</span>
+        </div>
+      </div>
+    </a>
+    <a class="card" href="meals.html">
+      <div class="card-icon">&#x1F37D;&#xFE0F;</div>
+      <div class="card-body">
+        <div class="card-title">Meal Planner</div>
+        <div class="card-desc">Weekly dinner plan, recipes, and grocery list</div>
+        <div class="card-meta">
+          <span class="badge badge-manual">MANUAL</span>
+        </div>
+      </div>
+    </a>
+    <a class="card" href="briefing.html">
+      <div class="card-icon">&#x2600;&#xFE0F;</div>
+      <div class="card-body">
+        <div class="card-title">Daily Briefing</div>
+        <div class="card-desc">Morning briefing &mdash; calendar, action items, reminders</div>
+        <div class="card-meta">
+          <span class="badge badge-scheduled">SCHEDULED</span>
+        </div>
+      </div>
+    </a>
+    <a class="card card-locked" href="expenses.html">
+      <div class="card-icon">&#x1F4B0;</div>
+      <div class="card-body">
+        <div class="card-title">Monthly Expenses</div>
+        <div class="card-desc">CIO expense report &mdash; password protected</div>
+        <div class="card-meta">
+          <span class="badge badge-encrypted">ENCRYPTED</span>
+          <span class="badge badge-manual">MANUAL</span>
+        </div>
+      </div>
+    </a>
   </div>
-</a><a class="card" href="family-schedule.xlsx">
-  <div class="card-icon">📅</div>
-  <div class="card-body">
-    <div class="card-title">Family Schedule<span class="badge">XLSX</span></div>
-    <div class="card-desc">Apr–May 2026 schedule spreadsheet</div>
-    <div class="card-meta">Updated Mar 30, 01:58 PM</div>
+</details>
+
+<!-- ═══════════ TRADING / ATHENA ═══════════ -->
+<details open>
+  <summary>Trading / Athena <span class="section-count">4 items</span></summary>
+  <div class="grid">
+    <a class="card" href="https://degoony.github.io/athena-dashboard/">
+      <div class="card-icon">&#x26A1;</div>
+      <div class="card-body">
+        <div class="card-title">Athena Signal</div>
+        <div class="card-desc">Live BTC covered call signal and checklist</div>
+        <div class="card-meta">
+          <span class="badge badge-update">DAILY 5:05 PM</span>
+        </div>
+      </div>
+    </a>
+    <a class="card" href="https://degoony.github.io/athena-dashboard/visualizer.html">
+      <div class="card-icon">&#x1F5FA;&#xFE0F;</div>
+      <div class="card-body">
+        <div class="card-title">Athena Visualizer</div>
+        <div class="card-desc">Full DVOL, VRP, and pullback trade map</div>
+        <div class="card-meta">
+          <span class="badge badge-manual">MANUAL</span>
+        </div>
+      </div>
+    </a>
+    <div class="card card-info">
+      <div class="card-icon">&#x1F4BE;</div>
+      <div class="card-body">
+        <div class="card-title">trades.json</div>
+        <div class="card-desc">Trade history and leaderboard</div>
+        <div class="card-meta">
+          <span class="badge badge-data">DATA</span>
+        </div>
+      </div>
+    </div>
+    <div class="card card-info">
+      <div class="card-icon">&#x1F4E1;</div>
+      <div class="card-body">
+        <div class="card-title">live_signal.json</div>
+        <div class="card-desc">Current signal state for Athena engine</div>
+        <div class="card-meta">
+          <span class="badge badge-data">DATA</span>
+          <span class="badge badge-update">DAILY</span>
+        </div>
+      </div>
+    </div>
   </div>
-</a><a class="card" href="daily-briefing.html">
-  <div class="card-icon">☀️</div>
-  <div class="card-body">
-    <div class="card-title">Daily Briefing</div>
-    <div class="card-desc">Morning briefing — calendar, action items, reminders</div>
-    <div class="card-meta">Updated Mar 30, 07:47 AM</div>
+</details>
+
+<!-- ═══════════ ARCHITECTURE ═══════════ -->
+<div class="arch-box">
+  <div class="arch-title">Data Flow Architecture</div>
+  <div class="arch-flow">
+   family_office.db (SQLite)
+          |
+    ------+------
+    |            |
+Allocation   Call Writing
+ Strategy     (Athena)
+    |            |
+    +----&lt;&gt;-----+
+    |  circular  |
+    v            v
+  Outputs    Signals</div>
+  <div style="margin-top:10px; font-size:11px; color:#8b7e6a;">
+    Allocation feeds callable BTC count &rarr; Call Writing<br>
+    Call Writing feeds yield assumptions &rarr; Allocation
   </div>
-</a><a class="card" href="meal-planner.html">
-  <div class="card-icon">🍽️</div>
-  <div class="card-body">
-    <div class="card-title">Meal Planner</div>
-    <div class="card-desc">Weekly dinner plan, recipes, and Whole Foods grocery list</div>
-    <div class="card-meta">Updated Mar 30, 02:18 PM</div>
-  </div>
-</a>
 </div>
+
+<!-- ═══════════ FINANCE / ALLOCATION ═══════════ -->
+<details open>
+  <summary>Finance / Allocation <span class="section-count">6 items</span></summary>
+  <div class="grid">
+    <a class="card card-locked" href="finance/cio-presentation.html">
+      <div class="card-icon">&#x1F3DB;&#xFE0F;</div>
+      <div class="card-body">
+        <div class="card-title">CIO Board Presentation</div>
+        <div class="card-desc">v10.4 strategy overview &mdash; allocation, tax, projections</div>
+        <div class="card-meta">
+          <span class="badge badge-encrypted">ENCRYPTED</span>
+          <span class="badge badge-manual">MANUAL</span>
+        </div>
+      </div>
+    </a>
+    <a class="card card-locked" href="finance/family-office.html">
+      <div class="card-icon">&#x1F3E6;</div>
+      <div class="card-body">
+        <div class="card-title">Family Office Dashboard</div>
+        <div class="card-desc">Master overview &mdash; allocation, calls, tax strategy</div>
+        <div class="card-meta">
+          <span class="badge badge-encrypted">ENCRYPTED</span>
+          <span class="badge badge-manual">MANUAL</span>
+        </div>
+      </div>
+    </a>
+    <a class="card card-locked" href="finance/strategy-visualizer.html">
+      <div class="card-icon">&#x1F4CA;</div>
+      <div class="card-body">
+        <div class="card-title">Strategy Visualizer</div>
+        <div class="card-desc">Allocation timeline and scenario modeling</div>
+        <div class="card-meta">
+          <span class="badge badge-encrypted">ENCRYPTED</span>
+          <span class="badge badge-manual">run_pipeline.py</span>
+        </div>
+      </div>
+    </a>
+    <a class="card card-locked" href="finance/funding-optimizer.html">
+      <div class="card-icon">&#x26A1;</div>
+      <div class="card-body">
+        <div class="card-title">Funding Optimizer</div>
+        <div class="card-desc">BTC funding matrix and cash flow analysis</div>
+        <div class="card-meta">
+          <span class="badge badge-encrypted">ENCRYPTED</span>
+          <span class="badge badge-manual">run_pipeline.py</span>
+        </div>
+      </div>
+    </a>
+    <a class="card card-locked" href="finance/coverage-sweep.html">
+      <div class="card-icon">&#x1F50D;</div>
+      <div class="card-body">
+        <div class="card-title">Coverage Sweep</div>
+        <div class="card-desc">Coverage analysis across scenarios</div>
+        <div class="card-meta">
+          <span class="badge badge-encrypted">ENCRYPTED</span>
+          <span class="badge badge-manual">coverage_sweep.py</span>
+        </div>
+      </div>
+    </a>
+    <a class="card card-locked" href="finance/cf-audit.html">
+      <div class="card-icon">&#x1F4DD;</div>
+      <div class="card-body">
+        <div class="card-title">Cash Flow Audit</div>
+        <div class="card-desc">Cash flow model validation and reconciliation</div>
+        <div class="card-meta">
+          <span class="badge badge-encrypted">ENCRYPTED</span>
+          <span class="badge badge-manual">run_pipeline.py</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</details>
+
+<!-- ═══════════ INFRASTRUCTURE ═══════════ -->
+<details>
+  <summary>Infrastructure <span class="section-count">shared</span></summary>
+  <div style="padding-top: 10px;">
+    <div class="infra-item"><code>shared/family_office.db</code> &mdash; Central SQLite database, single source of truth</div>
+    <div class="infra-item"><code>shared/db.py</code> &mdash; Python API: get_config(), get_tax_rules(), get_accounts()</div>
+    <div class="infra-item"><code>check_consistency.py</code> &mdash; Cross-file alignment validation</div>
+    <div class="infra-item"><code>run_pipeline.py</code> &mdash; Regenerate all Allocation outputs</div>
+    <div class="infra-item"><code>publish.sh</code> &mdash; Deploy to GitHub Pages (family-hub + finance)</div>
+    <div class="infra-item"><code>encrypt_finance.py</code> &mdash; Batch-encrypt finance files for publishing</div>
+  </div>
+</details>
+
+<div class="footer">
+  Published from ~/Documents/Claude/ via publish.sh
+</div>
+
 </body>
 </html>
