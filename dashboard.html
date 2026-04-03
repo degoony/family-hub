@@ -161,7 +161,8 @@
 
 <script>
 // ===== DATA START =====
-// GENERATED: 2026-04-03
+// GENERATED: 2026-04-03 05:04
+const GENERATED = "2026-04-03 05:04";
 
 const EVENTS = [
     // Mar 29 - Sun
@@ -532,9 +533,22 @@ function doRefresh() {
     setTimeout(() => window.location.reload(true), 400);
 }
 
-// Footer
-document.getElementById('footer').innerHTML =
-    `Generated ${DAYS[todayD.getDay()]} ${MONTHS[todayD.getMonth()]} ${todayD.getDate()}, ${todayD.getFullYear()} · <a href="https://degoony.github.io/family-hub/">family-hub</a>`;
+// Footer — show when data was last updated
+(function() {
+    let updatedStr = '';
+    if (GENERATED) {
+        const [datePart, timePart] = GENERATED.split(' ');
+        const genD = new Date(datePart + 'T' + (timePart || '05:00') + ':00');
+        const isToday = datePart === today;
+        const h = genD.getHours(), m = genD.getMinutes();
+        const ampm = h >= 12 ? 'pm' : 'am';
+        const hour = h % 12 || 12;
+        const timeStr = `${hour}:${String(m).padStart(2,'0')}${ampm}`;
+        updatedStr = isToday ? `Updated today at ${timeStr}` : `Updated ${MONTHS[genD.getMonth()]} ${genD.getDate()} at ${timeStr}`;
+    }
+    document.getElementById('footer').innerHTML =
+        `${updatedStr} · <a href="https://degoony.github.io/family-hub/">family-hub</a>`;
+})();
 </script>
 </body>
 </html>
