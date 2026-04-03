@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#f5f0e8">
-  <title>Youn Family</title>
+  <title>Daily Briefing</title>
   <script>
   (function(){var c=document.createElement('canvas');c.width=c.height=180;var x=c.getContext('2d'),r=38;x.beginPath();x.moveTo(r,0);x.lineTo(180-r,0);x.quadraticCurveTo(180,0,180,r);x.lineTo(180,180-r);x.quadraticCurveTo(180,180,180-r,180);x.lineTo(r,180);x.quadraticCurveTo(0,180,0,180-r);x.lineTo(0,r);x.quadraticCurveTo(0,0,r,0);x.closePath();x.fillStyle='#f5f0e8';x.fill();x.font='95px serif';x.textAlign='center';x.textBaseline='middle';x.fillText('📋',90,95);var l=document.createElement('link');l.rel='apple-touch-icon';l.href=c.toDataURL();document.head.appendChild(l);})();
   </script>
@@ -35,8 +35,31 @@
     }
     .container { max-width: 480px; margin: 0 auto; }
 
+    /* Top nav */
+    .top-nav { display: flex; justify-content: space-between; align-items: center; padding: 8px 0 12px; }
+    .back-btn {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 15px; font-weight: 600; color: #1a1a1a;
+      text-decoration: none; -webkit-tap-highlight-color: transparent;
+      padding: 4px 0;
+    }
+    .back-btn:active { opacity: 0.6; }
+    .back-chevron { font-size: 18px; font-weight: 300; line-height: 1; margin-top: -1px; }
+    .refresh-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--card); border: 1px solid var(--border);
+      cursor: pointer; font-size: 17px;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.15s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .refresh-btn:active { background: #f0ebe0; }
+    .refresh-btn.spinning { animation: spin 0.7s linear; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
     /* Header */
-    .header { margin-bottom: 14px; padding: 6px 0 2px; }
+    .header { margin-bottom: 14px; padding: 0 0 2px; }
     .header h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
     .header-date { font-size: 14px; color: var(--dim); margin-top: 2px; }
 
@@ -113,8 +136,14 @@
 </head>
 <body>
 <div class="container">
+  <div class="top-nav">
+    <a class="back-btn" href="https://degoony.github.io/family-hub/">
+      <span class="back-chevron">‹</span> Hub
+    </a>
+    <button class="refresh-btn" id="refresh-btn" title="Reload latest briefing" onclick="doRefresh()">↻</button>
+  </div>
   <div class="header">
-    <h1>Youn Family</h1>
+    <h1>Daily Briefing</h1>
     <div class="header-date" id="header-date"></div>
   </div>
 
@@ -494,6 +523,14 @@ if (tomEvs.length) {
     document.getElementById('horizon-card').innerHTML =
         `<div class="card"><div class="card-title">On the Horizon</div>${rows}</div>`;
 })();
+
+// Refresh button
+function doRefresh() {
+    const btn = document.getElementById('refresh-btn');
+    btn.classList.add('spinning');
+    btn.disabled = true;
+    setTimeout(() => window.location.reload(true), 400);
+}
 
 // Footer
 document.getElementById('footer').innerHTML =
