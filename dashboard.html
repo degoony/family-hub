@@ -142,6 +142,7 @@ const EVENTS = [
     // Mar 30 - Mon
     {date:"2026-03-30",time:null,name:"SSP: SPRING BREAK (all week)",who:"ben",allDay:true},
     {date:"2026-03-30",time:null,name:"Ben: Minecraft Lego Camp",who:"ben",allDay:true},
+    {date:"2026-03-30",time:"15:30",name:"Firecracker Math",who:"ethan"},
     {date:"2026-03-30",time:"15:40",name:"Taekwondo",who:"ethan"},
     {date:"2026-03-30",time:"18:00",name:"Trash night",who:"tom"},
     // Mar 31 - Tue
@@ -188,7 +189,8 @@ const EVENTS = [
     {date:"2026-04-12",time:"09:30",name:"Church",who:"jen"},
     // Apr 13 - Mon
     {date:"2026-04-13",time:"10:10",name:"Botox",who:"jen"},
-    {date:"2026-04-13",time:"15:40",name:"Taekwondo",who:"ethan"},
+    {date:"2026-04-13",time:"15:30",name:"Firecracker Math",who:"ethan"},
+    {date:"2026-04-13",time:"15:40",name:"Taekwondo",who:"ethan",detail:"May conflict with Firecracker Math (15:30)"},
     {date:"2026-04-13",time:"18:00",name:"Trash night",who:"tom"},
     // Apr 14 - Tue
     {date:"2026-04-14",time:null,name:"SSP: Daddy & Me Night",who:"ben",allDay:true,detail:"Tom to attend — block evening"},
@@ -197,6 +199,7 @@ const EVENTS = [
     // Apr 15 - Wed
     {date:"2026-04-15",time:null,name:"🎂 Janice's 86th Birthday",who:"family",allDay:true},
     {date:"2026-04-15",time:null,name:"⚠️ HR Summer Camp Registration DEADLINE",who:"ethan",allDay:true},
+    {date:"2026-04-15",time:null,name:"HR: Bring classroom share item",who:"ethan",allDay:true},
     {date:"2026-04-15",time:"10:30",name:"Microneedling 3",who:"jen"},
     {date:"2026-04-15",time:"15:40",name:"Taekwondo",who:"ethan"},
     // Apr 16 - Thu
@@ -204,34 +207,48 @@ const EVENTS = [
     // Apr 17 - Fri
     {date:"2026-04-17",time:"15:40",name:"Taekwondo",who:"ethan"},
     {date:"2026-04-17",time:"17:00",name:"Ben: Art class",who:"ben"},
+    // Apr 18 - Sat
+    {date:"2026-04-18",time:"10:10",name:"Ben: T-ball",who:"ben",detail:"Field B"},
     // Apr 19 - Sun
     {date:"2026-04-19",time:null,name:"Theo's birthday",who:"family",allDay:true},
     {date:"2026-04-19",time:"09:30",name:"Church",who:"jen"},
     {date:"2026-04-19",time:"14:00",name:"Baseball GAME",who:"ethan",detail:"Witter Softball"},
     // Apr 20 - Mon
+    {date:"2026-04-20",time:"15:00",name:"Dr. Umetsu — allergy",who:"ethan",detail:"Confirm: Ethan or Ben? Check who this is for."},
+    {date:"2026-04-20",time:"15:30",name:"Firecracker Math",who:"ethan"},
     {date:"2026-04-20",time:"15:40",name:"Taekwondo",who:"ethan"},
     {date:"2026-04-20",time:"18:00",name:"Trash night",who:"tom"},
     // Apr 21 - Tue
     {date:"2026-04-21",time:"09:15",name:"Walk with Elaine",who:"jen"},
     {date:"2026-04-21",time:"17:00",name:"Baseball practice",who:"ethan"},
     {date:"2026-04-21",time:"18:00",name:"HR: K-8 Academic Program Event",who:"family"},
+    // Apr 22 - Wed
+    {date:"2026-04-22",time:null,name:"HR: Bring classroom share item",who:"ethan",allDay:true},
+    {date:"2026-04-22",time:"10:30",name:"Tesla Collision — San Rafael",who:"jen",detail:"Car repair appointment"},
+    {date:"2026-04-22",time:"15:40",name:"Taekwondo",who:"ethan"},
     // Apr 23 - Thu
     {date:"2026-04-23",time:"17:00",name:"Ben: T-ball",who:"ben"},
     // Apr 24 - Fri
     {date:"2026-04-24",time:"15:40",name:"Taekwondo",who:"ethan"},
     {date:"2026-04-24",time:"17:00",name:"Ben: Art class",who:"ben"},
+    // Apr 25 - Sat
+    {date:"2026-04-25",time:"08:00",name:"Ben: T-ball",who:"ben",detail:"Field A"},
     // Apr 26 - Sun
     {date:"2026-04-26",time:"09:30",name:"Church",who:"jen"},
     {date:"2026-04-26",time:"12:00",name:"Baseball GAME",who:"ethan",detail:"Witter Softball"},
     // Apr 27 - Mon
     {date:"2026-04-27",time:"09:00",name:"HR: Oakland Children's Hospital chaperone",who:"jen"},
     {date:"2026-04-27",time:"12:00",name:"Trex Birthday",who:"tom"},
+    {date:"2026-04-27",time:"15:30",name:"Firecracker Math",who:"ethan"},
     {date:"2026-04-27",time:"15:40",name:"Taekwondo",who:"ethan"},
     {date:"2026-04-27",time:"18:00",name:"Trash night",who:"tom"},
     // Apr 28 - Tue
     {date:"2026-04-28",time:"09:15",name:"Walk with Elaine",who:"jen"},
     {date:"2026-04-28",time:"13:00",name:"Physical with Dr. Tim",who:"jen"},
     {date:"2026-04-28",time:"17:00",name:"Baseball practice",who:"ethan"},
+    // Apr 29 - Wed
+    {date:"2026-04-29",time:null,name:"HR: Bring classroom share item",who:"ethan",allDay:true},
+    {date:"2026-04-29",time:"15:40",name:"Taekwondo",who:"ethan"},
     // Apr 30 - Thu
     {date:"2026-04-30",time:null,name:"HR: Art Show — bring 1 dozen cookies",who:"ethan",allDay:true},
     {date:"2026-04-30",time:"16:00",name:"HR: Art Show",who:"family"},
@@ -240,7 +257,7 @@ const EVENTS = [
     {date:"2026-05-01",time:"15:40",name:"Taekwondo",who:"ethan"},
     {date:"2026-05-01",time:"17:00",name:"Ben: Art class",who:"ben"},
     // May 2 - Sat
-    {date:"2026-05-02",time:"10:10",name:"Ben: Field B T-ball",who:"ben"},
+    {date:"2026-05-02",time:"10:10",name:"Ben: T-ball",who:"ben",detail:"Field B"},
     {date:"2026-05-02",time:"16:00",name:"Baseball GAME",who:"ethan",detail:"Hampton Field"},
     // May 3 - Sun
     {date:"2026-05-03",time:"09:30",name:"Church",who:"jen"},
@@ -248,36 +265,71 @@ const EVENTS = [
     {date:"2026-05-04",time:null,name:"⚠️ HR Early Dismissal — Ethan out at 12:05pm",who:"ethan",allDay:true},
     {date:"2026-05-04",time:"10:45",name:"HR: Book sale cashier training",who:"jen"},
     {date:"2026-05-04",time:"11:30",name:"HR: Book sale cashier",who:"jen"},
+    {date:"2026-05-04",time:"15:30",name:"Firecracker Math",who:"ethan"},
     {date:"2026-05-04",time:"15:40",name:"Taekwondo",who:"ethan"},
+    {date:"2026-05-04",time:"18:00",name:"Trash night",who:"tom"},
+    // May 5 - Tue
+    {date:"2026-05-05",time:"09:15",name:"Walk with Elaine",who:"jen"},
+    {date:"2026-05-05",time:"17:00",name:"Baseball practice",who:"ethan"},
+    // May 6 - Wed
+    {date:"2026-05-06",time:null,name:"HR: Bring classroom share item",who:"ethan",allDay:true},
+    {date:"2026-05-06",time:"13:45",name:"HR: Book sale class shopper",who:"jen"},
+    {date:"2026-05-06",time:"15:40",name:"Taekwondo",who:"ethan"},
     // May 7 - Thu
     {date:"2026-05-07",time:null,name:"Alexander's Birthday",who:"tom",allDay:true},
     {date:"2026-05-07",time:"17:00",name:"Ben: T-ball",who:"ben"},
     // May 8 - Fri
+    {date:"2026-05-08",time:null,name:"✈️ Tom: LA Trip (departs 6pm, back May 10)",who:"tom",allDay:true},
     {date:"2026-05-08",time:"15:30",name:"Ethan's 7yr physical",who:"ethan"},
     {date:"2026-05-08",time:"15:40",name:"Taekwondo",who:"ethan",detail:"Conflicts with physical — reschedule one"},
     {date:"2026-05-08",time:"17:00",name:"Ben: Art class",who:"ben"},
+    // May 9 - Sat
+    {date:"2026-05-09",time:null,name:"✈️ Tom in LA",who:"tom",allDay:true},
+    {date:"2026-05-09",time:"11:20",name:"Ben: T-ball",who:"ben",detail:"Field C"},
+    // May 10 - Sun
+    {date:"2026-05-10",time:null,name:"✈️ Tom returns from LA",who:"tom",allDay:true},
+    {date:"2026-05-10",time:"09:30",name:"Church",who:"jen"},
+    {date:"2026-05-10",time:"10:00",name:"Baseball GAME",who:"ethan",detail:"Witter Softball"},
+    // May 11 - Mon
+    {date:"2026-05-11",time:"15:30",name:"Firecracker Math",who:"ethan"},
+    {date:"2026-05-11",time:"18:00",name:"Trash night",who:"tom"},
+    // May 12 - Tue
+    {date:"2026-05-12",time:"09:15",name:"Walk with Elaine",who:"jen"},
+    {date:"2026-05-12",time:"17:00",name:"Baseball practice",who:"ethan"},
+    // May 13 - Wed
+    {date:"2026-05-13",time:null,name:"HR: Bring classroom share item",who:"ethan",allDay:true},
+    {date:"2026-05-13",time:"15:40",name:"Taekwondo",who:"ethan"},
+    // May 14 - Thu
+    {date:"2026-05-14",time:"17:00",name:"Ben: T-ball",who:"ben"},
+    // May 15 - Fri
+    {date:"2026-05-15",time:"15:40",name:"Taekwondo",who:"ethan"},
+    {date:"2026-05-15",time:"17:00",name:"Ben: Art class",who:"ben"},
 ];
 
 const ALERTS = [
     {date:"Apr 4",   title:"Pick up Norman & Janice at OAK", detail:"Southwest BUR→OAK, conf #C5XYJW. Need exact flight time!", severity:"high"},
-    {date:"Apr 4",   title:"Tom: RSVP to Easter Egg Hunt", detail:"Tomorrow 11am. Jen accepted. Tom pending.", severity:"high"},
+    {date:"Apr 4",   title:"Tom: RSVP to Easter Egg Hunt", detail:"Tomorrow 11am. Jen accepted. Tom still pending.", severity:"high"},
     {date:"Apr 6–8", title:"CVR logistics", detail:"1 car or 2? Who drives? Kids activities week of Apr 6 — cancelled or grandparents handling?", severity:"high"},
     {date:"Apr 10",  title:"Janice birthday celebration (early)", detail:"Actual birthday Apr 15 (turning 86). Celebrate while grandparents in town Apr 4–11. Plan TBD.", severity:"high"},
     {date:"Apr 11",  title:"Drop off Norman & Janice at OAK", detail:"Southwest OAK→BUR. Coordinate with Ben's T-ball picture day (11:20am).", severity:"high"},
     {date:"Apr 14",  title:"SSP Daddy & Me Night", detail:"Tom attends with Ben at St. Stephen's. Block the evening.", severity:"high"},
     {date:"Apr 15",  title:"HR Summer Camp registration deadline", detail:"Summer Camp Jun 15–Jul 10 (swim + enrichment). Register Ethan? Space limited.", severity:"high"},
+    {date:"May 8",   title:"Ethan physical vs Taekwondo conflict", detail:"Physical at 3:30pm, TKD at 3:40pm — direct overlap. Skip TKD or reschedule physical.", severity:"high"},
+    {date:"May 8–10",title:"Tom: LA Trip — Jen solo with kids", detail:"Tom departs May 8 at 6pm, returns May 10. Plan Ethan physical logistics and weekend kid coverage.", severity:"high"},
     {date:"Apr 10",  title:"Count-Me-In Marketplace closes", detail:"Any HR events worth signing up for?", severity:"medium"},
     {date:"Apr 15",  title:"Umoja Award nomination deadline", detail:"Consider submitting.", severity:"medium"},
+    {date:"Apr 20",  title:"Schedule conflict: Dr. Umetsu + Firecracker Math + TKD", detail:"Allergy appt at 3pm, Firecracker Math 3:30pm, TKD 3:40pm — all same day. Allergy appt likely takes priority; confirm who it's for.", severity:"medium"},
     {date:"Apr 21",  title:"HR Academic Program event 6pm", detail:"Parent event at Head Royce. Who attends? Need childcare if both go.", severity:"medium"},
+    {date:"Apr 22",  title:"Tesla Collision — San Rafael 10:30am", detail:"Car repair appointment. Drop-off or wait? May need alternate transport.", severity:"medium"},
     {date:"Apr 30",  title:"HR Art Show — cookies needed", detail:"Bring 1 dozen cookies. Art Show at 4pm. Also Used Book Sale — donate books now.", severity:"medium"},
     {date:"May 4",   title:"HR Early Dismissal — 12:05pm", detail:"Professional development day. Plan Ethan pickup.", severity:"medium"},
-    {date:"May 8",   title:"Ethan physical vs Taekwondo conflict", detail:"Physical at 3:30pm, TKD at 3:40pm — direct overlap. Skip TKD or reschedule physical.", severity:"high"},
     {date:"Family",  title:"Norman & Janice phone numbers missing", detail:"Needed for travel coordination. Get from Tom's contacts.", severity:"low"},
 ];
 
 const TRIPS = [
     {dates:"Apr 4–11",  name:"Norman & Janice Visit", duration:"8 days",  detail:"Tom's parents visiting from LA. Southwest BUR↔OAK, conf #C5XYJW. Includes CVR trip.", tag:"booked", tagLabel:"Confirmed"},
     {dates:"Apr 6–8",   name:"Carmel Valley Ranch",   duration:"2 nights", detail:"Hyatt, conf #6583662. 2 rooms, 4 adults. Family + grandparents. Both kids coming.", tag:"booked", tagLabel:"Confirmed"},
+    {dates:"May 8–10",  name:"Tom: LA Trip",          duration:"2 nights", detail:"Tom traveling to LA. Jen solo with kids May 8–10. Ethan 7yr physical May 8.", tag:"booked", tagLabel:"Confirmed"},
     {dates:"Jun 15–Jul 10", name:"HR Summer Camp",    duration:"4 weeks",  detail:"Registration deadline Apr 15. Swim + enrichment. Register Ethan?", tag:"plan", tagLabel:"Decide"},
     {dates:"Jul 7–13",  name:"Anniversary Trip Window", duration:"7 days", detail:"Bora Bora cancelled. Open for new plan if desired.", tag:"plan", tagLabel:"Undecided"},
     {dates:"May 23–25", name:"Memorial Day Weekend",  duration:"3 days",  detail:"Long weekend. Both schools likely off Monday. Tahoe, Carmel, Napa, or Monterey.", tag:"open", tagLabel:"Available"},
