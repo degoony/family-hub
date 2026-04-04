@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#f5f0e8">
@@ -163,6 +163,7 @@
 // ===== DATA START =====
 // GENERATED: 2026-04-04 10:16
 const GENERATED = "2026-04-04 10:16";
+const LAST_SWEEP = "2026-04-04 10:16";
 
 const EVENTS = [
     // Mar 29 - Sun
@@ -361,7 +362,7 @@ const TRIPS = [
     {dates:"Apr 6–8",   name:"Carmel Valley Ranch",   duration:"2 nights", detail:"Carmel Valley Ranch (Hyatt). 2 cars. ETA 1pm. Family + grandparents. Both kids coming. Dinner reservations recommended.", tag:"booked", tagLabel:"Confirmed"},
     {dates:"May 8–10",  name:"Tom: LA Trip",          duration:"2 nights", detail:"Tom traveling to LA. Jen solo with kids May 8–10. Ethan 7yr physical May 8.", tag:"booked", tagLabel:"Confirmed"},
     {dates:"Jun 15–Jul 10", name:"HR Summer Camp",    duration:"4 weeks",  detail:"Registration deadline Apr 15. Swim + enrichment. Register Ethan?", tag:"plan", tagLabel:"Decide"},
-    {dates:"Jul 7–13",  name:"Anniversary Trip Window", duration:"7 days", detail:"Bora Bora cancelled. Open for new plan if desired.", tag:"plan", tagLabel:"Undecided"},
+    {dates:"Jul 7–13",  name:"Anniversary Trip Window", duration:"7 days", detail:"Open window — no plan yet.", tag:"open", tagLabel:"Available"},
     {dates:"May 23–25", name:"Memorial Day Weekend",  duration:"3 days",  detail:"Long weekend. Both schools likely off Monday. Tahoe, Carmel, Napa, or Monterey.", tag:"open", tagLabel:"Available"},
     {dates:"Late June", name:"Post-School Family Trip", duration:"Flexible", detail:"After school ends. Confirm HR and SSP last days first.", tag:"open", tagLabel:"Available"},
 ];
@@ -409,8 +410,22 @@ const tomorrow = shiftDate(today, 1);
 const tomD = new Date(tomorrow + 'T12:00:00');
 
 // Header
-document.getElementById('header-date').textContent =
-    `${DAYS[todayD.getDay()]}, ${MONTHS[todayD.getMonth()]} ${todayD.getDate()}, ${todayD.getFullYear()}`;
+(function() {
+    const dateStr = `${DAYS[todayD.getDay()]}, ${MONTHS[todayD.getMonth()]} ${todayD.getDate()}, ${todayD.getFullYear()}`;
+    function fmtTS(val) {
+        if (!val) return '';
+        const [dp, tp] = val.split(' ');
+        const d = new Date(dp + 'T' + (tp||'05:00') + ':00');
+        const h = d.getHours(), m = d.getMinutes();
+        return `${h%12||12}:${String(m).padStart(2,'0')}${h>=12?'pm':'am'}`;
+    }
+    const parts = [
+        GENERATED ? 'Updated ' + fmtTS(GENERATED) : '',
+        (typeof LAST_SWEEP !== 'undefined' && LAST_SWEEP) ? 'Sweep ' + fmtTS(LAST_SWEEP) : ''
+    ].filter(Boolean).join(' · ');
+    document.getElementById('header-date').innerHTML =
+        dateStr + (parts ? `<br><span style="font-size:12px;opacity:0.8">${parts}</span>` : '');
+})();
 
 // Alert banner — high severity only
 const highAlerts = ALERTS.filter(a => a.severity === 'high');
@@ -533,21 +548,24 @@ function doRefresh() {
     setTimeout(() => window.location.reload(true), 400);
 }
 
-// Footer — show when data was last updated
+// Footer — show when data was last updated and last swept
 (function() {
-    let updatedStr = '';
-    if (GENERATED) {
-        const [datePart, timePart] = GENERATED.split(' ');
-        const genD = new Date(datePart + 'T' + (timePart || '05:00') + ':00');
+    function fmtTimestamp(ts) {
+        if (!ts) return '';
+        const [datePart, timePart] = ts.split(' ');
+        const d = new Date(datePart + 'T' + (timePart || '05:00') + ':00');
         const isToday = datePart === today;
-        const h = genD.getHours(), m = genD.getMinutes();
+        const h = d.getHours(), m = d.getMinutes();
         const ampm = h >= 12 ? 'pm' : 'am';
         const hour = h % 12 || 12;
         const timeStr = `${hour}:${String(m).padStart(2,'0')}${ampm}`;
-        updatedStr = isToday ? `Updated today at ${timeStr}` : `Updated ${MONTHS[genD.getMonth()]} ${genD.getDate()} at ${timeStr}`;
+        return isToday ? `today at ${timeStr}` : `${MONTHS[d.getMonth()]} ${d.getDate()} at ${timeStr}`;
     }
+    const updatedStr = GENERATED ? `Updated ${fmtTimestamp(GENERATED)}` : '';
+    const sweepStr = (typeof LAST_SWEEP !== 'undefined' && LAST_SWEEP) ? `Sweep ${fmtTimestamp(LAST_SWEEP)}` : '';
+    const parts = [updatedStr, sweepStr].filter(Boolean).join(' · ');
     document.getElementById('footer').innerHTML =
-        `${updatedStr} · <a href="https://degoony.github.io/family-hub/">family-hub</a>`;
+        `${parts} · <a href="https://degoony.github.io/family-hub/">family-hub</a>`;
 })();
 </script>
 </body>
