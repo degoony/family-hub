@@ -161,23 +161,18 @@
 
 <script>
 // ===== DATA START =====
-// GENERATED: 2026-04-10 05:00
-const GENERATED = "2026-04-10 05:00";
-const LAST_SWEEP = "2026-04-10 05:00";
+// GENERATED: 2026-04-11 05:00
+const GENERATED = "2026-04-11 05:00";
+const LAST_SWEEP = "2026-04-11 05:00";
 
 const EVENTS = [
-    // Apr 3 - Fri
-    {date:"2026-04-03",time:"09:00",name:"HR: Spring Show (Grades 3-5)",who:"ethan"},
-    {date:"2026-04-03",time:"10:00",name:"HR: Spring Show cleanup (MEW Room)",who:"jen"},
-    {date:"2026-04-03",time:"15:40",name:"Taekwondo",who:"ethan"},
-    {date:"2026-04-03",time:"17:00",name:"Ben: Art class",who:"ben"},
-    // Apr 4 - Sat
-    {date:"2026-04-04",time:"09:55",name:"✈️ Norman & Janice arrive OAK 9:55am (SW #2494, conf C5XYJW)",who:"family"},
-    {date:"2026-04-04",time:"11:00",name:"Easter Egg Hunt",who:"family",detail:"Both confirmed"},
+    // Apr 4 - Sat (past week context)
+    {date:"2026-04-04",time:"09:55",name:"✈️ Norman & Janice arrive OAK",who:"family",detail:"SW #2494, conf C5XYJW"},
+    {date:"2026-04-04",time:"11:00",name:"Easter Egg Hunt",who:"family"},
     // Apr 5 - Sun
     {date:"2026-04-05",time:"09:30",name:"Church",who:"jen"},
     {date:"2026-04-05",time:"10:00",name:"Easter Sunday",who:"family"},
-    // Apr 6 - Mon (HR Spring Break week)
+    // Apr 6 - Mon
     {date:"2026-04-06",time:null,name:"HR: SPRING BREAK (all week)",who:"ethan",allDay:true},
     {date:"2026-04-06",time:null,name:"🏨 Depart for Carmel Valley Ranch",who:"family",allDay:true},
     {date:"2026-04-06",time:"18:00",name:"Trash night",who:"tom"},
@@ -186,23 +181,22 @@ const EVENTS = [
     // Apr 8 - Wed
     {date:"2026-04-08",time:null,name:"🏨 CVR checkout",who:"family",allDay:true},
     // Apr 9 - Thu
+    {date:"2026-04-09",time:null,name:"🎂 Janice birthday dinner ✅",who:"family",allDay:true,detail:"Celebrated per Tom's message."},
     {date:"2026-04-09",time:"17:00",name:"Ben: T-ball",who:"ben"},
-    // Apr 10 - Fri (TODAY)
-    {date:"2026-04-10",time:null,name:"🎂 LAST CHANCE: Birthday celebration for Janice",who:"family",allDay:true,detail:"Grandparents depart tomorrow. Tonight is last opportunity for birthday dinner."},
-    {date:"2026-04-10",time:"08:00",name:"Jen's mom — ophthalmology (Pasadena)",who:"jen",detail:"Not Jen — her mother's appointment"},
+    // Apr 10 - Fri
     {date:"2026-04-10",time:"09:30",name:"Gardener",who:"family"},
     {date:"2026-04-10",time:"15:40",name:"Taekwondo",who:"ethan"},
     {date:"2026-04-10",time:"17:00",name:"Ben: Art class",who:"ben"},
-    // Apr 11 - Sat
-    {date:"2026-04-11",time:"16:50",name:"✈️ Norman & Janice depart OAK 4:50pm → BUR 6:00pm (SW #3530)",who:"family"},
+    // Apr 11 - TODAY (Sat)
     {date:"2026-04-11",time:"11:20",name:"T-ball Picture Day & Game",who:"ben",detail:"Pine Grove Field (C)"},
+    {date:"2026-04-11",time:"16:50",name:"✈️ Drop off Norman & Janice — OAK 4:50pm → BUR 6:00pm",who:"family",detail:"SW #3530. Tom driving to airport."},
     // Apr 12 - Sun
     {date:"2026-04-12",time:"08:00",name:"Baseball GAME",who:"ethan",detail:"Witter Softball"},
     {date:"2026-04-12",time:"09:30",name:"Church",who:"jen"},
-    // Apr 13 - Mon
+    // Apr 13 - Mon (schools resume)
     {date:"2026-04-13",time:"10:10",name:"Botox",who:"jen"},
     {date:"2026-04-13",time:"15:30",name:"Firecracker Math",who:"ethan"},
-    {date:"2026-04-13",time:"15:40",name:"Taekwondo",who:"ethan",detail:"May conflict with Firecracker Math (15:30)"},
+    {date:"2026-04-13",time:"15:40",name:"Taekwondo",who:"ethan",detail:"Conflicts with Firecracker Math (15:30) — resolve before Monday"},
     {date:"2026-04-13",time:"18:00",name:"Trash night",who:"tom"},
     // Apr 14 - Tue
     {date:"2026-04-14",time:null,name:"SSP: Daddy & Me Night",who:"ben",allDay:true,detail:"Tom to attend — block evening"},
@@ -226,7 +220,7 @@ const EVENTS = [
     {date:"2026-04-19",time:"09:30",name:"Church",who:"jen"},
     {date:"2026-04-19",time:"14:00",name:"Baseball GAME",who:"ethan",detail:"Witter Softball"},
     // Apr 20 - Mon
-    {date:"2026-04-20",time:"15:00",name:"Dr. Umetsu — allergy",who:"ethan",detail:"Confirm: Ethan or Ben? Check who this is for."},
+    {date:"2026-04-20",time:"15:00",name:"Dr. Umetsu — allergy",who:"ethan",detail:"Confirm: Ethan or Ben?"},
     {date:"2026-04-20",time:"15:30",name:"Firecracker Math",who:"ethan"},
     {date:"2026-04-20",time:"15:40",name:"Taekwondo",who:"ethan"},
     {date:"2026-04-20",time:"18:00",name:"Trash night",who:"tom"},
@@ -289,9 +283,10 @@ const EVENTS = [
     {date:"2026-05-06",time:"15:40",name:"Taekwondo",who:"ethan"},
     // May 7 - Thu
     {date:"2026-05-07",time:null,name:"Alexander's Birthday",who:"tom",allDay:true},
+    {date:"2026-05-07",time:null,name:"Housekeeping",who:"family",allDay:true},
     {date:"2026-05-07",time:"17:00",name:"Ben: T-ball",who:"ben"},
     // May 8 - Fri
-    {date:"2026-05-08",time:null,name:"✈️ Tom: LA Trip (departs 6pm, back May 10)",who:"tom",allDay:true},
+    {date:"2026-05-08",time:null,name:"✈️ Tom: LA Trip (departs 6pm, back May 10)",who:"tom",allDay:true,detail:"Tom's birthday trip. Possibly whole family — TBD (see alerts)."},
     {date:"2026-05-08",time:"15:30",name:"Ethan's 7yr physical",who:"ethan"},
     {date:"2026-05-08",time:"15:40",name:"Taekwondo",who:"ethan",detail:"Conflicts with physical — reschedule one"},
     {date:"2026-05-08",time:"17:00",name:"Ben: Art class",who:"ben"},
@@ -323,35 +318,55 @@ const EVENTS = [
     // May 18 - Mon
     {date:"2026-05-18",time:"15:30",name:"Firecracker Math",who:"ethan"},
     {date:"2026-05-18",time:"18:00",name:"Trash night",who:"tom"},
+    // May 13 - Wed
+    {date:"2026-05-13",time:"15:40",name:"Taekwondo",who:"ethan"},
+    // May 14 - Thu
+    {date:"2026-05-14",time:"17:00",name:"Ben: T-ball",who:"ben"},
+    // May 15 - Fri
+    {date:"2026-05-15",time:"15:40",name:"Taekwondo",who:"ethan"},
+    {date:"2026-05-15",time:"17:00",name:"Ben: Art class (last)",who:"ben"},
+    // May 16 - Sat
+    {date:"2026-05-16",time:"11:20",name:"Ben: T-ball",who:"ben",detail:"Field A"},
+    // May 17 - Sun
+    {date:"2026-05-17",time:"09:30",name:"Church",who:"jen"},
+    // May 18 - Mon
+    {date:"2026-05-18",time:"15:30",name:"Firecracker Math",who:"ethan"},
+    {date:"2026-05-18",time:"18:00",name:"Trash night",who:"tom"},
     // May 19 - Tue
     {date:"2026-05-19",time:"09:15",name:"Walk with Elaine",who:"jen"},
     {date:"2026-05-19",time:"10:30",name:"Microneedling 4",who:"jen"},
+    // May 20 - Wed
+    {date:"2026-05-20",time:null,name:"HR: Bring classroom share item",who:"ethan",allDay:true},
+    {date:"2026-05-20",time:"15:40",name:"Taekwondo",who:"ethan"},
+    // May 21 - Thu
+    {date:"2026-05-21",time:null,name:"Jessie's Birthday",who:"family",allDay:true},
+    {date:"2026-05-21",time:"15:40",name:"Taekwondo",who:"ethan"},
+    // May 22 - Fri
+    {date:"2026-05-22",time:"15:40",name:"Taekwondo",who:"ethan"},
 ];
 
 const ALERTS = [
-    {date:"TODAY",   title:"🎂 Last chance — celebrate Janice's birthday tonight", detail:"Grandparents depart tomorrow (OAK 4:50pm). Tonight is the ONLY remaining opportunity for a birthday dinner. Actual birthday Apr 15 (turning 86).", severity:"high"},
-    {date:"TODAY",   title:"⚠️ Count-Me-In Marketplace closes TODAY", detail:"HR community events registration closes today. Sign up now or miss it.", severity:"high"},
-    {date:"Apr 11",  title:"Drop off Norman & Janice at OAK", detail:"SW #3530: OAK departs 4:50pm → BUR arrives 6:00pm. Tom confirmed drop-off. T-ball picture day 11:20am (3+ hrs before departure — manageable).", severity:"medium"},
+    {date:"TODAY",   title:"✈️ Drop off Norman & Janice at OAK today", detail:"SW #3530: OAK departs 4:50pm → BUR arrives 6:00pm. T-ball picture day 11:20am — manageable (3+ hrs gap). Tom driving.", severity:"high"},
+    {date:"Apr 13",  title:"Firecracker Math + TKD conflict — Monday", detail:"Both at 3:30–3:40pm when schools resume Apr 13. Resolve before Monday.", severity:"high"},
     {date:"Apr 14",  title:"SSP Daddy & Me Night", detail:"Tom attends with Ben at St. Stephen's. Block the evening.", severity:"high"},
     {date:"Apr 15",  title:"HR Summer Camp registration deadline", detail:"Summer Camp Jun 15–Jul 10 (swim + enrichment). Register Ethan? Space limited.", severity:"high"},
     {date:"May 8",   title:"Ethan physical vs Taekwondo conflict", detail:"Physical at 3:30pm, TKD at 3:40pm — direct overlap. Skip TKD or reschedule physical.", severity:"high"},
-    {date:"May 8–10",title:"Tom: LA Trip — Jen solo with kids", detail:"Tom departs May 8 at 6pm, returns May 10. Plan Ethan physical logistics and weekend kid coverage.", severity:"high"},
+    {date:"May 8–10",title:"LA Trip — whole family or just Tom?", detail:"Tom mentioned it might be whole family (birthday trip). Confirm with Jen. If just Tom, Jen solo with kids May 8–10.", severity:"high"},
     {date:"Apr 15",  title:"Umoja Award nomination deadline", detail:"Consider submitting.", severity:"medium"},
-    {date:"Apr 20",  title:"Schedule conflict: Dr. Umetsu + Firecracker Math + TKD", detail:"Allergy appt at 3pm, Firecracker Math 3:30pm, TKD 3:40pm — all same day. Allergy appt likely takes priority; confirm who it's for.", severity:"medium"},
+    {date:"Apr 20",  title:"Schedule conflict: Dr. Umetsu + Firecracker Math + TKD", detail:"Allergy appt at 3pm, Firecracker Math 3:30pm, TKD 3:40pm — all same day. Confirm who allergy appt is for.", severity:"medium"},
     {date:"Apr 21",  title:"HR Academic Program event 6pm", detail:"Parent event at Head Royce. Who attends? Need childcare if both go.", severity:"medium"},
     {date:"Apr 22",  title:"Tesla Collision — San Rafael 10:30am", detail:"Car repair appointment. Drop-off or wait? May need alternate transport.", severity:"medium"},
     {date:"Apr 30",  title:"HR Art Show — cookies needed", detail:"Bring 1 dozen cookies. Art Show at 4pm. Also Used Book Sale — donate books now.", severity:"medium"},
     {date:"May 4",   title:"HR Early Dismissal — 12:05pm", detail:"Professional development day. Plan Ethan pickup.", severity:"medium"},
-    {date:"Family",  title:"Norman & Janice phone numbers missing", detail:"Needed for travel coordination. Get from Tom's contacts.", severity:"low"},
 ];
 
 const TRIPS = [
-    {dates:"Apr 4–11",  name:"Norman & Janice Visit", duration:"8 days",  detail:"Tom's parents visiting from LA. Southwest BUR↔OAK, conf #C5XYJW. Includes CVR trip.", tag:"booked", tagLabel:"Confirmed"},
-    {dates:"Apr 6–8",   name:"Carmel Valley Ranch",   duration:"2 nights", detail:"Carmel Valley Ranch (Hyatt). 2 cars confirmed (Tom). Family + grandparents. Both kids came. ✅ Complete.", tag:"booked", tagLabel:"Confirmed"},
-    {dates:"May 8–10",  name:"Tom: LA Trip",          duration:"2 nights", detail:"Tom traveling to LA. Jen solo with kids May 8–10. Ethan 7yr physical May 8.", tag:"booked", tagLabel:"Confirmed"},
+    {dates:"Apr 4–11",  name:"Norman & Janice Visit", duration:"8 days",  detail:"Grandparents depart TODAY (OAK 4:50pm SW #3530 → BUR). CVR trip ✅ complete Apr 6–8.", tag:"booked", tagLabel:"Confirmed"},
+    {dates:"Apr 6–8",   name:"Carmel Valley Ranch",   duration:"2 nights", detail:"✅ Complete. Family + grandparents. Great trip.", tag:"booked", tagLabel:"Confirmed"},
+    {dates:"May 8–10",  name:"Tom: LA Trip",          duration:"2 nights", detail:"Tom's birthday trip. Possibly whole family — Tom mentioned this option Apr 10, confirm with Jen.", tag:"booked", tagLabel:"Confirmed"},
     {dates:"Jun 15–Jul 10", name:"HR Summer Camp",    duration:"4 weeks",  detail:"Registration deadline Apr 15. Swim + enrichment. Register Ethan?", tag:"plan", tagLabel:"Decide"},
-    {dates:"Jul 7–13",  name:"Anniversary Trip Window", duration:"7 days", detail:"Open window — no plan yet.", tag:"open", tagLabel:"Available"},
     {dates:"May 23–25", name:"Memorial Day Weekend",  duration:"3 days",  detail:"Long weekend. Both schools likely off Monday. Tahoe, Carmel, Napa, or Monterey.", tag:"open", tagLabel:"Available"},
+    {dates:"Jul 7–13",  name:"Anniversary Trip Window", duration:"7 days", detail:"Open window — no plan yet.", tag:"open", tagLabel:"Available"},
     {dates:"Late June", name:"Post-School Family Trip", duration:"Flexible", detail:"After school ends. Confirm HR and SSP last days first.", tag:"open", tagLabel:"Available"},
 ];
 
