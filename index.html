@@ -166,7 +166,7 @@ a.card:active { background: #faf7f2; }
 
 <!-- ═══════════ TRADING / ATHENA ═══════════ -->
 <details open>
-  <summary>Trading / Athena <span class="section-count">4 items</span></summary>
+  <summary>Trading / Athena <span class="section-count">2 items</span></summary>
   <div class="grid">
     <a class="card" href="https://degoony.github.io/athena-dashboard/">
       <div class="card-icon">&#x26A1;</div>
@@ -188,54 +188,12 @@ a.card:active { background: #faf7f2; }
         </div>
       </div>
     </a>
-    <div class="card card-info">
-      <div class="card-icon">&#x1F4BE;</div>
-      <div class="card-body">
-        <div class="card-title">trades.json</div>
-        <div class="card-desc">Trade history and leaderboard</div>
-        <div class="card-meta">
-          <span class="badge badge-data">DATA</span>
-        </div>
-      </div>
-    </div>
-    <div class="card card-info">
-      <div class="card-icon">&#x1F4E1;</div>
-      <div class="card-body">
-        <div class="card-title">live_signal.json</div>
-        <div class="card-desc">Current signal state for Athena engine</div>
-        <div class="card-meta">
-          <span class="badge badge-data">DATA</span>
-          <span class="badge badge-update">DAILY</span>
-        </div>
-      </div>
-    </div>
   </div>
 </details>
 
-<!-- ═══════════ ARCHITECTURE ═══════════ -->
-<div class="arch-box">
-  <div class="arch-title">Data Flow Architecture</div>
-  <div class="arch-flow">
-   family_office.db (SQLite)
-          |
-    ------+------
-    |            |
-Allocation   Call Writing
- Strategy     (Athena)
-    |            |
-    +----&lt;&gt;-----+
-    |  circular  |
-    v            v
-  Outputs    Signals</div>
-  <div style="margin-top:10px; font-size:11px; color:#8b7e6a;">
-    Allocation feeds callable BTC count &rarr; Call Writing<br>
-    Call Writing feeds yield assumptions &rarr; Allocation
-  </div>
-</div>
-
 <!-- ═══════════ FINANCE / ALLOCATION ═══════════ -->
 <details open>
-  <summary>Finance / Allocation <span class="section-count">6 items</span></summary>
+  <summary>Finance / Allocation <span class="section-count">4 items</span></summary>
   <div class="grid">
     <a class="card card-locked" href="finance/cio-presentation.html">
       <div class="card-icon">&#x1F3DB;&#xFE0F;</div>
@@ -267,28 +225,6 @@ Allocation   Call Writing
         <div class="card-meta">
           <span class="badge badge-encrypted">ENCRYPTED</span>
           <span class="badge badge-manual">run_pipeline.py</span>
-        </div>
-      </div>
-    </a>
-    <a class="card card-locked" href="finance/funding-optimizer.html">
-      <div class="card-icon">&#x26A1;</div>
-      <div class="card-body">
-        <div class="card-title">Funding Optimizer</div>
-        <div class="card-desc">BTC funding matrix and cash flow analysis</div>
-        <div class="card-meta">
-          <span class="badge badge-encrypted">ENCRYPTED</span>
-          <span class="badge badge-manual">run_pipeline.py</span>
-        </div>
-      </div>
-    </a>
-    <a class="card card-locked" href="finance/coverage-sweep.html">
-      <div class="card-icon">&#x1F50D;</div>
-      <div class="card-body">
-        <div class="card-title">Coverage Sweep</div>
-        <div class="card-desc">Coverage analysis across scenarios</div>
-        <div class="card-meta">
-          <span class="badge badge-encrypted">ENCRYPTED</span>
-          <span class="badge badge-manual">coverage_sweep.py</span>
         </div>
       </div>
     </a>
