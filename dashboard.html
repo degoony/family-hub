@@ -161,9 +161,9 @@
 
 <script>
 // ===== DATA START =====
-// GENERATED: 2026-04-13 05:00
-const GENERATED = "2026-04-13 05:00";
-const LAST_SWEEP = "2026-04-13 05:00";
+// GENERATED: 2026-04-14 05:00
+const GENERATED = "2026-04-14 05:00";
+const LAST_SWEEP = "2026-04-14 05:00";
 
 const EVENTS = [
     // Apr 6 - Mon (past week context)
@@ -182,14 +182,15 @@ const EVENTS = [
     // Apr 12 - Sun
     {date:"2026-04-12",time:"08:00",name:"Baseball GAME ✅",who:"ethan",detail:"Witter Softball"},
     {date:"2026-04-12",time:"09:30",name:"Church ✅",who:"jen"},
-    // Apr 13 - TODAY (Mon) — schools resume
-    {date:"2026-04-13",time:"10:10",name:"Botox",who:"jen"},
-    {date:"2026-04-13",time:"14:00",name:"Tom's haircut",who:"tom"},
-    {date:"2026-04-13",time:"15:30",name:"Firecracker Math",who:"ethan"},
-    {date:"2026-04-13",time:"15:40",name:"Taekwondo",who:"ethan",detail:"Conflicts with Firecracker Math (15:30) — resolve today"},
-    {date:"2026-04-13",time:"18:00",name:"Trash night",who:"tom"},
-    // Apr 14 - Tue (SSP Daddy & Me Night CANCELED)
+    // Apr 13 - Mon (past)
+    {date:"2026-04-13",time:"10:10",name:"Botox ✅",who:"jen"},
+    {date:"2026-04-13",time:"14:00",name:"Tom's haircut ✅",who:"tom"},
+    {date:"2026-04-13",time:"15:30",name:"Firecracker Math ✅",who:"ethan"},
+    {date:"2026-04-13",time:"15:40",name:"Taekwondo ✅",who:"ethan"},
+    {date:"2026-04-13",time:"18:00",name:"Trash night ✅",who:"tom"},
+    // Apr 14 - TODAY (Tue) — SSP Daddy & Me Night CANCELED
     {date:"2026-04-14",time:"09:15",name:"Walk with Elaine",who:"jen",detail:"Wilder / Lafayette Reservoir"},
+    {date:"2026-04-14",time:"13:00",name:"Wealth Enhancement Follow Up",who:"tom",detail:"Mike Welch — RingCentral call, 30 min"},
     {date:"2026-04-14",time:"17:00",name:"Baseball practice",who:"ethan"},
     // Apr 15 - Wed
     {date:"2026-04-15",time:null,name:"🎂 Janice's 86th Birthday",who:"family",allDay:true},
@@ -324,8 +325,8 @@ const EVENTS = [
 ];
 
 const ALERTS = [
-    {date:"TODAY Apr 13", title:"Firecracker Math + TKD conflict — TODAY", detail:"Both at 3:30–3:40pm (schools resumed). Decide now: skip TKD or find alternate pickup for Firecracker Math.", severity:"high"},
-    {date:"Apr 15",  title:"HR Summer Camp registration deadline", detail:"Summer Camp Jun 15–Jul 10 (swim + enrichment). Register Ethan? Space limited.", severity:"high"},
+    {date:"Recurring Mon",title:"Firecracker Math + TKD recurring conflict", detail:"Both at 3:30–3:40pm on Firecracker Math Mondays (next: Apr 27, May 4, 11…). Decide: skip TKD those days or find alternate pickup.", severity:"medium"},
+    {date:"TOMORROW Apr 15",title:"HR Summer Camp registration deadline", detail:"Summer Camp Jun 15–Jul 10 (swim + enrichment). Register Ethan? Space limited.", severity:"high"},
     {date:"May 8",   title:"Ethan physical vs Taekwondo conflict", detail:"Physical at 3:30pm, TKD at 3:40pm — direct overlap. Skip TKD or reschedule physical.", severity:"high"},
     {date:"May 8–10",title:"LA Trip — whole family or just Tom?", detail:"Tom mentioned it might be whole family (birthday trip). Confirm with Jen. If just Tom, Jen solo with kids May 8–10.", severity:"high"},
     {date:"Apr 15",  title:"Umoja Award nomination deadline", detail:"Consider submitting.", severity:"medium"},
