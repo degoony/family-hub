@@ -161,9 +161,9 @@
 
 <script>
 // ===== DATA START =====
-// GENERATED: 2026-04-15 05:02
-const GENERATED = "2026-04-15 05:02";
-const LAST_SWEEP = "2026-04-15 05:02";
+// GENERATED: 2026-04-16 05:03
+const GENERATED = "2026-04-16 05:03";
+const LAST_SWEEP = "2026-04-16 05:03";
 
 const EVENTS = [
     // Apr 9-13 (past week context)
@@ -177,11 +177,11 @@ const EVENTS = [
     {date:"2026-04-14",time:"09:15",name:"Walk with Elaine ✅",who:"jen",detail:"Wilder / Lafayette Reservoir"},
     {date:"2026-04-14",time:"13:00",name:"Wealth Enhancement Follow Up ✅",who:"tom",detail:"Mike Welch — rescheduled to 1:30pm"},
     {date:"2026-04-14",time:"17:00",name:"Baseball practice ✅",who:"ethan"},
-    // Apr 15 - TODAY (Wed)
-    {date:"2026-04-15",time:null,name:"🎂 Janice's 86th Birthday",who:"family",allDay:true},
-    {date:"2026-04-15",time:null,name:"⚠️ HR Summer Camp Registration DEADLINE",who:"ethan",allDay:true},
-    {date:"2026-04-15",time:null,name:"HR: Bring classroom share item",who:"ethan",allDay:true},
-    {date:"2026-04-15",time:"15:40",name:"Taekwondo",who:"ethan"},
+    // Apr 15 - Wed (past)
+    {date:"2026-04-15",time:null,name:"🎂 Janice's 86th Birthday ✅",who:"family",allDay:true},
+    {date:"2026-04-15",time:null,name:"⚠️ HR Summer Camp Registration DEADLINE ✅",who:"ethan",allDay:true},
+    {date:"2026-04-15",time:null,name:"HR: Bring classroom share item ✅",who:"ethan",allDay:true},
+    {date:"2026-04-15",time:"15:40",name:"Taekwondo ✅",who:"ethan"},
     // Apr 16 - Thu
     {date:"2026-04-16",time:"17:00",name:"Ben: T-ball",who:"ben"},
     // Apr 17 - Fri
@@ -323,8 +323,8 @@ const EVENTS = [
 ];
 
 const ALERTS = [
-    {date:"TODAY Apr 15",title:"HR Summer Camp registration deadline", detail:"Summer Camp Jun 15–Jul 10 (swim + enrichment). Register Ethan? Space limited.", severity:"high"},
-    {date:"TODAY Apr 15",title:"Umoja Award nomination deadline", detail:"HR: Umoja Award nomination due today. Consider submitting.", severity:"high"},
+    {date:"Passed Apr 15",title:"HR Summer Camp — confirm registration", detail:"Deadline was Apr 15. Camp Jun 15–Jul 10 (swim + enrichment). Did you register Ethan? Confirm or it's closed.", severity:"medium"},
+    {date:"Summer",title:"Korea trip: schedule Cook doctor appt first", detail:"Tom's request (Apr 15): book Cook doctor appointment, then arrange Korea summer travel. Dates TBD.", severity:"medium"},
     {date:"Recurring Mon",title:"Firecracker Math + TKD recurring conflict", detail:"Both at 3:30–3:40pm on Firecracker Math Mondays (next: Apr 27, May 4, 11…). Decide: skip TKD those days or find alternate pickup.", severity:"medium"},
     {date:"May 8",   title:"Ethan physical vs Taekwondo conflict", detail:"Physical at 3:30pm, TKD at 3:40pm — direct overlap. Skip TKD or reschedule physical.", severity:"high"},
     {date:"May 8–10",title:"LA Trip — whole family or just Tom?", detail:"Tom's calendar shows May 8–10. Tom said Apr 10 it would be whole family if he goes. Confirm with Jen.", severity:"high"},
@@ -338,7 +338,8 @@ const ALERTS = [
 
 const TRIPS = [
     {dates:"May 8–10",  name:"Tom: LA Trip",          duration:"2 nights", detail:"Tom's birthday trip. Tom said Apr 10 it'd be whole family if he goes — confirm with Jen.", tag:"booked", tagLabel:"Confirmed"},
-    {dates:"Jun 15–Jul 10", name:"HR Summer Camp",    duration:"4 weeks",  detail:"Registration deadline TODAY Apr 15. Swim + enrichment. Register Ethan?", tag:"plan", tagLabel:"Decide"},
+    {dates:"Jun 15–Jul 10", name:"HR Summer Camp",    duration:"4 weeks",  detail:"Registration deadline passed Apr 15. Did you register Ethan? Swim + enrichment.", tag:"plan", tagLabel:"Decide"},
+    {dates:"Summer 2026", name:"Korea Family Trip",   duration:"TBD",      detail:"Tom's request: schedule Cook doctor appt first, then arrange travel. Dates TBD.", tag:"open", tagLabel:"Available"},
     {dates:"May 23–25", name:"Memorial Day Weekend",  duration:"3 days",  detail:"Long weekend. Both schools likely off Monday. Tahoe, Carmel, Napa, or Monterey.", tag:"open", tagLabel:"Available"},
     {dates:"Jul 7–13",  name:"Anniversary Trip Window", duration:"7 days", detail:"Open window — no plan yet.", tag:"open", tagLabel:"Available"},
     {dates:"Late June", name:"Post-School Family Trip", duration:"Flexible", detail:"After school ends. SSP last day May 27, confirm HR last day.", tag:"open", tagLabel:"Available"},
