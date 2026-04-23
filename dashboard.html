@@ -161,9 +161,9 @@
 
 <script>
 // ===== DATA START =====
-// GENERATED: 2026-04-22 05:00
-const GENERATED = "2026-04-22 05:00";
-const LAST_SWEEP = "2026-04-23 04:09";
+// GENERATED: 2026-04-23 05:00
+const GENERATED = "2026-04-23 05:00";
+const LAST_SWEEP = "2026-04-23 05:00";
 
 const EVENTS = [
     // Apr 9-20 (past context)
@@ -197,11 +197,11 @@ const EVENTS = [
     {date:"2026-04-21",time:"10:35",name:"HR: Earth Day volunteer ✅",who:"jen"},
     {date:"2026-04-21",time:"17:00",name:"Baseball practice ✅",who:"ethan"},
     {date:"2026-04-21",time:"18:00",name:"HR: K-8 Academic Program Event ✅",who:"family"},
-    // Apr 22 - Wed (TODAY)
-    {date:"2026-04-22",time:null,name:"HR: Bring classroom share item",who:"ethan",allDay:true},
-    {date:"2026-04-22",time:"10:30",name:"Tesla Collision — San Rafael",who:"jen",detail:"Car repair appointment"},
-    {date:"2026-04-22",time:"15:40",name:"Taekwondo",who:"ethan"},
-    // Apr 23 - Thu
+    // Apr 22 - Wed (past)
+    {date:"2026-04-22",time:null,name:"HR: Bring classroom share item ✅",who:"ethan",allDay:true},
+    {date:"2026-04-22",time:"10:30",name:"Tesla Collision — San Rafael ✅",who:"jen",detail:"Car repair appointment"},
+    {date:"2026-04-22",time:"15:40",name:"Taekwondo ✅",who:"ethan"},
+    // Apr 23 - Thu (TODAY)
     {date:"2026-04-23",time:"17:00",name:"Ben: T-ball",who:"ben"},
     // Apr 24 - Fri
     {date:"2026-04-24",time:"15:40",name:"Taekwondo",who:"ethan"},
@@ -332,6 +332,17 @@ const EVENTS = [
     {date:"2026-05-31",time:"09:30",name:"Church",who:"jen"},
     // Jun 1 - Mon
     {date:"2026-06-01",time:null,name:"Replace odor filters — all air purifiers",who:"family",allDay:true},
+    {date:"2026-06-01",time:null,name:"Mom's BOA",who:"jen",allDay:true},
+    {date:"2026-06-01",time:"15:30",name:"Firecracker Math",who:"ethan"},
+    // Jun 2 - Tue
+    {date:"2026-06-02",time:"09:15",name:"Walk with Elaine",who:"jen"},
+    // Jun 3 - Wed (HR Last Day!)
+    {date:"2026-06-03",time:null,name:"🎉 HR: Last Day of School",who:"ethan",allDay:true},
+    {date:"2026-06-03",time:"15:30",name:"Dr. Ahmad — endo/X-ray",who:"ethan",detail:"Orthodontic/endo consult with X-ray. Conflicts with TKD — reschedule one."},
+    {date:"2026-06-03",time:"15:40",name:"Taekwondo",who:"ethan",detail:"Conflicts with Dr. Ahmad — reschedule one"},
+    // Jun 4 - Thu
+    {date:"2026-06-04",time:null,name:"Housekeeping",who:"family",allDay:true},
+    {date:"2026-06-04",time:"10:15",name:"Dentist cleaning",who:"family"},
 ];
 
 const ALERTS = [
@@ -347,6 +358,8 @@ const ALERTS = [
     {date:"May 31+", title:"Tom: NY trip — confirm duration", detail:"Calendar shows Tom in NY starting May 31. Return date unknown. Confirm details and childcare/coverage plan.", severity:"medium"},
     {date:"Summer",  title:"Korea trip: schedule Cook doctor appt first", detail:"Tom's request (Apr 15): book Cook doctor appointment, then arrange Korea summer travel. Dates TBD.", severity:"medium"},
     {date:"Late May/Jun", title:"Ben's birthday party — book Encore Gymnastics", detail:"Calendar reminder May 30: check Encore Gymnastics party schedule for Ben's birthday. Book slot before summer fills up.", severity:"medium"},
+    {date:"Jun 3",  title:"Dr. Ahmad vs TKD conflict", detail:"Ortho/endo consult + X-ray at 3:30pm, TKD at 3:40pm on Jun 3 (HR Last Day). Direct overlap — skip TKD or reschedule.", severity:"medium"},
+    {date:"Jun 3",  title:"HR Last Day — plan summer coverage", detail:"HR Last Day of School is Jun 3. SSP ends May 27. Gap: May 28 – Jun 3 (6 days) Ethan has no school. Plan coverage.", severity:"medium"},
 ];
 
 const TRIPS = [
@@ -356,7 +369,7 @@ const TRIPS = [
     {dates:"Summer 2026", name:"Korea Family Trip",     duration:"TBD",       detail:"Tom's request: schedule Cook doctor appt first, then arrange travel. Dates TBD.", tag:"open", tagLabel:"Available"},
     {dates:"Memorial Day", name:"Memorial Day Weekend", duration:"3 days",    detail:"Long weekend May 23–25. Both schools likely off Monday. Tahoe, Carmel, Napa, or Monterey.", tag:"open", tagLabel:"Available"},
     {dates:"Jul 7–13",  name:"Anniversary Trip Window", duration:"7 days",    detail:"Open window — no plan yet.", tag:"open", tagLabel:"Available"},
-    {dates:"Late June", name:"Post-School Family Trip", duration:"Flexible",  detail:"After school ends. SSP last day May 27, confirm HR last day.", tag:"open", tagLabel:"Available"},
+    {dates:"Late June", name:"Post-School Family Trip", duration:"Flexible",  detail:"After school ends. SSP last day May 27, HR last day Jun 3 (confirmed).", tag:"open", tagLabel:"Available"},
 ];
 
 // ===== DATA END =====
