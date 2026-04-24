@@ -161,9 +161,9 @@
 
 <script>
 // ===== DATA START =====
-// GENERATED: 2026-04-23 05:00
-const GENERATED = "2026-04-23 05:00";
-const LAST_SWEEP = "2026-04-24 14:33";
+// GENERATED: 2026-04-24 05:00
+const GENERATED = "2026-04-24 05:00";
+const LAST_SWEEP = "2026-04-24 05:00";
 
 const EVENTS = [
     // Apr 9-20 (past context)
@@ -201,13 +201,13 @@ const EVENTS = [
     {date:"2026-04-22",time:null,name:"HR: Bring classroom share item ✅",who:"ethan",allDay:true},
     {date:"2026-04-22",time:"10:30",name:"Tesla Collision — San Rafael ✅",who:"jen",detail:"Car repair appointment"},
     {date:"2026-04-22",time:"15:40",name:"Taekwondo ✅",who:"ethan"},
-    // Apr 23 - Thu (TODAY)
-    {date:"2026-04-23",time:"17:00",name:"Ben: T-ball",who:"ben"},
+    // Apr 23 - Thu (past)
+    {date:"2026-04-23",time:"17:00",name:"Ben: T-ball ✅",who:"ben"},
     // Apr 24 - Fri
     {date:"2026-04-24",time:"15:40",name:"Taekwondo",who:"ethan"},
     {date:"2026-04-24",time:"17:00",name:"Ben: Art class",who:"ben"},
     // Apr 25 - Sat
-    {date:"2026-04-25",time:"08:00",name:"Ben: T-ball",who:"ben",detail:"Field A"},
+    {date:"2026-04-25",time:"09:00",name:"Ben: T-ball",who:"ben",detail:"Field A"},
     {date:"2026-04-25",time:"14:00",name:"Swim lessons",who:"family"},
     {date:"2026-04-25",time:"18:00",name:"First Grade Spring Parent Social Soiree",who:"jen",detail:"61 King Ave, Piedmont. Tom + Jen — confirm childcare."},
     // Apr 26 - Sun
@@ -340,9 +340,15 @@ const EVENTS = [
     {date:"2026-06-03",time:null,name:"🎉 HR: Last Day of School",who:"ethan",allDay:true},
     {date:"2026-06-03",time:"15:30",name:"Dr. Ahmad — endo/X-ray",who:"ethan",detail:"Orthodontic/endo consult with X-ray. Conflicts with TKD — reschedule one."},
     {date:"2026-06-03",time:"15:40",name:"Taekwondo",who:"ethan",detail:"Conflicts with Dr. Ahmad — reschedule one"},
-    // Jun 4 - Thu
+    // Jun 4 - Thu (Korea trip begins)
     {date:"2026-06-04",time:null,name:"Housekeeping",who:"family",allDay:true},
+    {date:"2026-06-04",time:null,name:"✈️ Korea trip — hotel check-in (UH Suite The Coex, Seoul)",who:"family",allDay:true,detail:"Gmail-auto booking confirmed. Return date unknown — confirm."},
     {date:"2026-06-04",time:"10:15",name:"Dentist cleaning",who:"family"},
+    // Jun 5 - Fri
+    {date:"2026-06-05",time:"11:00",name:"Dr. Hsu — ophthalmology (dilation)",who:"family",detail:"Eye exam with dilation. Confirm who the appointment is for."},
+    {date:"2026-06-05",time:"15:40",name:"Taekwondo",who:"ethan"},
+    // Jun 6 - Sat
+    {date:"2026-06-06",time:"14:00",name:"Swim lessons",who:"family"},
 ];
 
 const ALERTS = [
@@ -356,7 +362,7 @@ const ALERTS = [
     {date:"May 8",   title:"Ethan physical vs Taekwondo conflict", detail:"Physical at 3:30pm, TKD at 3:40pm — direct overlap. Skip TKD or reschedule physical.", severity:"high"},
     {date:"May 8–10",title:"LA Trip — whole family or just Tom?", detail:"Tom's calendar shows May 8–10. Tom said Apr 10 it would be whole family if he goes. Confirm with Jen.", severity:"high"},
     {date:"May 31+", title:"Tom: NY trip — confirm duration", detail:"Calendar shows Tom in NY starting May 31. Return date unknown. Confirm details and childcare/coverage plan.", severity:"medium"},
-    {date:"Summer",  title:"Korea trip: schedule Cook doctor appt first", detail:"Tom's request (Apr 15): book Cook doctor appointment, then arrange Korea summer travel. Dates TBD.", severity:"medium"},
+    {date:"Jun 4+",  title:"Korea trip — hotel BOOKED, return date unknown", detail:"UH Suite The Coex (Seoul) confirmed from Gmail booking, starting Jun 4. Return date not in calendar. Confirm: (1) return date, (2) flights, (3) Cook doctor appt — was supposed to happen first.", severity:"high"},
     {date:"Late May/Jun", title:"Ben's birthday party — book Encore Gymnastics", detail:"Calendar reminder May 30: check Encore Gymnastics party schedule for Ben's birthday. Book slot before summer fills up.", severity:"medium"},
     {date:"Jun 3",  title:"Dr. Ahmad vs TKD conflict", detail:"Ortho/endo consult + X-ray at 3:30pm, TKD at 3:40pm on Jun 3 (HR Last Day). Direct overlap — skip TKD or reschedule.", severity:"medium"},
     {date:"Jun 3",  title:"HR Last Day — plan summer coverage", detail:"HR Last Day of School is Jun 3. SSP ends May 27. Gap: May 28 – Jun 3 (6 days) Ethan has no school. Plan coverage.", severity:"medium"},
@@ -366,7 +372,7 @@ const TRIPS = [
     {dates:"May 8–10",  name:"Tom: LA Trip",           duration:"2 nights",  detail:"Tom's birthday trip. Tom said Apr 10 it'd be whole family if he goes — confirm with Jen.", tag:"booked", tagLabel:"Confirmed"},
     {dates:"May 31+",   name:"Tom: NY",                 duration:"TBD",       detail:"Calendar shows Tom in NY starting May 31. Duration unknown — confirm return date.", tag:"plan", tagLabel:"Decide"},
     {dates:"Jun 15–Jul 10", name:"HR Summer Camp",      duration:"4 weeks",   detail:"Registration deadline passed Apr 15. Did you register Ethan? Swim + enrichment.", tag:"plan", tagLabel:"Decide"},
-    {dates:"Summer 2026", name:"Korea Family Trip",     duration:"TBD",       detail:"Tom's request: schedule Cook doctor appt first, then arrange travel. Dates TBD.", tag:"open", tagLabel:"Available"},
+    {dates:"Jun 4+",      name:"Korea Family Trip",     duration:"TBD",       detail:"Hotel confirmed: UH Suite The Coex, Seoul. Departs Jun 4 (day after HR last day). Return date unknown — confirm flights + itinerary. Cook doctor appt TBD.", tag:"booked", tagLabel:"Confirmed"},
     {dates:"Memorial Day", name:"Memorial Day Weekend", duration:"3 days",    detail:"Long weekend May 23–25. Both schools likely off Monday. Tahoe, Carmel, Napa, or Monterey.", tag:"open", tagLabel:"Available"},
     {dates:"Jul 7–13",  name:"Anniversary Trip Window", duration:"7 days",    detail:"Open window — no plan yet.", tag:"open", tagLabel:"Available"},
     {dates:"Late June", name:"Post-School Family Trip", duration:"Flexible",  detail:"After school ends. SSP last day May 27, HR last day Jun 3 (confirmed).", tag:"open", tagLabel:"Available"},
